@@ -24,6 +24,7 @@ def get_test_input(img):
     #img = cv2.resize(img, (64,128))          #Resize to the input dimension
     img_ =  img[:,:,::-1].transpose((2,0,1))  # BGR -> RGB | H X W C -> C X H X W
     img_ = img_[np.newaxis,:,:,:]/255.0       #Add a channel at 0 (for batch) | Normalise
+    #img_[1] = img[:,:,::-1].transpose((2,0,1))
     #img_ = img_[ :, :, :] / 255.0  # Add a channel at 0 (for batch) | Normalise
     img_ = torch.from_numpy(img_).float()     #Convert to float
     img_ = Variable(img_)                     # Convert to Variable
@@ -116,21 +117,39 @@ class Convdev(nn.Module):
         #output_1 = output_1.view(1024)
         #output_2 = output_2.view(1024)
         output = torch.tensordot(output_1,output_2)
+        #print(output.shape)
+
+        output = torch.sum(output, (2,3))
+        #print(output.shape)
+        output = output.sum()/1024
+        #print(output.shape)
 
 
         return output
 
 
+class TripletLoss(nn.Module):
+    def __init__(self, margin=1.0):
+        super(TripletLoss, self).__init__()
+        self.margin = margin
 
+    def calc_euclidean(self, x1, x2):
+        return (x1 - x2).pow(2).sum(1)
+
+    def forward(self, anchor, positive, negative):
+        distance_positive = self.calc_euclidean(anchor, positive)
+        distance_negative = self.calc_euclidean(anchor, negative)
+        losses = torch.relu(distance_positive - distance_negative + self.margin)
+
+        return losses.mean()
 
 '''
 class CrossPatch(nn.Module):
     def __init__(self):
         super(CrossPatch, self).__init__()
         self.layer1 = nn.conv2D(in_channels = 1500, out_channels=25, kernel_size= )
-
-'''
-
+        
+        
 
 class SiameseNetwork(nn.Module):
     def __init__(self):
@@ -194,13 +213,18 @@ class SiameseNetwork(nn.Module):
         return output1, output2
 
 
+'''
+
+
+
 if __name__ == '__main__':
     img1 = get_test_input(img)
     img2 = get_test_input(img)
     model = Convdev()
     out1  = model(img1, img2)
-    out = out1.view(1024)
-    n = len(out)
-    ncc_value = torch.sum(out)/n
+    #out = out1.view(1024)
+    #n = len(out)
+    ncc_value = out1 #torch.sum(out)/n
     print(ncc_value)
+    print(model)
     #print(out2.shape)
