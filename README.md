@@ -12,9 +12,10 @@ Using Seamese Network and Normalised Cross Co-Relation.
 `matplotlib`
 `opencv-python`
 
-### How To Run
+### How To Setup
 
 1. Open command prompt.
-2. Run ```~/env/Scripts/activate.bat```
-3. [...]
+2. Create virtual environment.
+3. Run ```~/env/Scripts/activate.bat```
+4. `pip install -r requirements.txt`
 
