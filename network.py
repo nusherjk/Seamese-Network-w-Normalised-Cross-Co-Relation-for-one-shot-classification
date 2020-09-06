@@ -8,8 +8,10 @@ import cv2
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
 
+# setting default to gpu
+torch.set_default_tensor_type('torch.cuda.FloatTensor')
 
-# Still does not have batch training.
+# Still does not have batch training.[FIXED]
 
 #Work in progress
 
@@ -27,7 +29,8 @@ def get_test_input(img):
     #img_[1] = img[:,:,::-1].transpose((2,0,1))
     #img_ = img_[ :, :, :] / 255.0  # Add a channel at 0 (for batch) | Normalise
     img_ = torch.from_numpy(img_).float()     #Convert to float
-    img_ = Variable(img_)                     # Convert to Variable
+    #print(img_.shape)
+    img_ = Variable(img_).cuda()                   # Convert to Variable
     return img_
 
 
@@ -61,7 +64,7 @@ def patch_std(image, patch_shape):
 
 
 def channel_normalize(template):
-    reshaped_template = template.clone().view(template.shape[0], -1)
+    reshaped_template = template.clone().reshape(template.shape[0], -1)
     reshaped_template.sub_(reshaped_template.mean(dim=-1, keepdim=True))
     reshaped_template.div_(reshaped_template.std(dim=-1, keepdim=True, unbiased=False))
 
@@ -106,7 +109,7 @@ class Convdev(nn.Module):
         out = self.lReLU(self.batchnorm6(self.layer6(out)))
         out = self.lReLU(self.batchnorm7(self.layer7(out)))
         #out = self.lReLU(self.batchnorm8(self.layer8(out)))
-        out = self.pool(out)
+        #out = self.pool(out)
         return out
 
     def forward(self, input1, input2):
@@ -221,6 +224,7 @@ if __name__ == '__main__':
     img1 = get_test_input(img)
     img2 = get_test_input(img)
     model = Convdev()
+
     out1  = model(img1, img2)
     #out = out1.view(1024)
     #n = len(out)
