@@ -23,7 +23,7 @@ img = "img.jpg"
 
 def get_test_input(img):
     img = cv2.imread(img)
-    #img = cv2.resize(img, (64,128))          #Resize to the input dimension
+    img = cv2.resize(img, (128,128))          #Resize to the input dimension
     img_ =  img[:,:,::-1].transpose((2,0,1))  # BGR -> RGB | H X W C -> C X H X W
     img_ = img_[np.newaxis,:,:,:]/255.0       #Add a channel at 0 (for batch) | Normalise
     #img_[1] = img[:,:,::-1].transpose((2,0,1))
@@ -109,126 +109,66 @@ class Convdev(nn.Module):
         out = self.lReLU(self.batchnorm6(self.layer6(out)))
         out = self.lReLU(self.batchnorm7(self.layer7(out)))
         #out = self.lReLU(self.batchnorm8(self.layer8(out)))
-        #out = self.pool(out)
+        out = self.pool(out)
+        #print(out.shape)
         return out
 
-    def forward(self, input1, input2):
+    def forward(self, input1, input2, input3=None):
         output_1 = self.forward_one(input1)
         output_2 = self.forward_one(input2)
+
+
         output_1 = channel_normalize(output_1)
         output_2 = channel_normalize(output_2)
+        #print(output_1.shape)
+        #print(output_2.shape)
         #output_1 = output_1.view(1024)
         #output_2 = output_2.view(1024)
-        output = torch.tensordot(output_1,output_2)
+        pos_distance = torch.tensordot(output_1,output_2)
         #print(output.shape)
 
-        output = torch.sum(output, (2,3))
+        pos_distance = torch.sum(pos_distance, (2,3))
         #print(output.shape)
-        output = output.sum()/1024
+        pos_distance = pos_distance.sum()/1024
         #print(output.shape)
+        if input3 != None:
+            output_3 = self.forward_one(input3)
+            output_3 = channel_normalize(output_3)
+            neg_distance = torch.tensordot(output_1,output_3)
+            neg_distance = torch.sum(neg_distance, (2, 3))
+            # print(output.shape)
+            neg_distance = neg_distance.sum() / 1024
+            return pos_distance, neg_distance
 
 
-        return output
+        return pos_distance
 
 
 class TripletLoss(nn.Module):
     def __init__(self, margin=1.0):
         super(TripletLoss, self).__init__()
         self.margin = margin
+        self.lReLU = nn.LeakyReLU()
 
-    def calc_euclidean(self, x1, x2):
-        return (x1 - x2).pow(2).sum(1)
+    def forward(self, distance_positive, distance_negative):
+        losses = self.lReLU(distance_positive + distance_negative + self.margin)
 
-    def forward(self, anchor, positive, negative):
-        distance_positive = self.calc_euclidean(anchor, positive)
-        distance_negative = self.calc_euclidean(anchor, negative)
-        losses = torch.relu(distance_positive - distance_negative + self.margin)
-
-        return losses.mean()
-
-'''
-class CrossPatch(nn.Module):
-    def __init__(self):
-        super(CrossPatch, self).__init__()
-        self.layer1 = nn.conv2D(in_channels = 1500, out_channels=25, kernel_size= )
-        
-        
-
-class SiameseNetwork(nn.Module):
-    def __init__(self):
-        super(SiameseNetwork, self).__init__()
-
-        # Outputs batch X 512 X 1 X 1
-        self.net = nn.Sequential(
-            nn.Conv2d(3, 32, kernel_size=3, stride=2),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm2d(32),
-            # nn.Dropout2d(p=0.4),
-
-            nn.Conv2d(32, 64, kernel_size=3, stride=2),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm2d(64),
-            # nn.Dropout2d(p=0.4),
-
-            nn.Conv2d(64, 128, kernel_size=3, stride=2),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm2d(128),
-            # nn.Dropout2d(p=0.4),
+        return losses.sum()
 
 
-            nn.Conv2d(128, 256, kernel_size=1, stride=2),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm2d(256),
-            # nn.Dropout2d(p=0.4),
-
-            nn.Conv2d(256, 256, kernel_size=1, stride=2),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm2d(256),
-            # nn.Dropout2d(p=0.4),
-
-            nn.Conv2d(256, 512, kernel_size=3, stride=2),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm2d(512),
-
-            # 1X1 filters to increase dimensions
-            nn.Conv2d(512, 1024, kernel_size=1, stride=1),
-            nn.ReLU(inplace=True),
-            nn.BatchNorm2d(1024),
-
-        )
-
-    def forward_once(self, x):
-        output = self.net(x)
-        # output = output.view(output.size()[0], -1)
-        # output = self.fc(output)
-
-        output = torch.squeeze(output)
-        return output
-
-    def forward(self, input1, input2, input3=None):
-        output1 = self.forward_once(input1)
-        output2 = self.forward_once(input2)
-
-        if input3 is not None:
-            output3 = self.forward_once(input3)
-            return output1, output2, output3
-
-        return output1, output2
-
-
-'''
 
 
 
 if __name__ == '__main__':
     img1 = get_test_input(img)
     img2 = get_test_input(img)
-    model = Convdev()
+    model = Convdev().cuda()
+    tpl = TripletLoss()
 
-    out1  = model(img1, img2)
-    #out = out1.view(1024)
-    #n = len(out)
-    ncc_value = out1 #torch.sum(out)/n
-    print(ncc_value)
-    print(model)
+    out1, out2  = model(img1, img2, img2)
+    loss = tpl(out1,out2)
+    print(loss)
+
+    #ncc_value = out1 #torch.sum(out)/n
+    #print(ncc_value)
     #print(out2.shape)
