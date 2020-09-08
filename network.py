@@ -138,10 +138,10 @@ class Convdev(nn.Module):
             neg_distance = torch.sum(neg_distance, (2, 3))
             # print(output.shape)
             neg_distance = neg_distance.sum() / 1024
-            return pos_distance, neg_distance
+            return pos_distance.abs(), neg_distance.abs()
 
 
-        return pos_distance
+        return pos_distance.abs()
 
 
 class TripletLoss(nn.Module):
