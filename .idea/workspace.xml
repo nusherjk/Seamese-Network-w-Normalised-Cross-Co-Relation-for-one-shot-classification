@@ -19,11 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="update on the arcitecture and added triplet loss">
-      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="now ncc returns absolute values">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/driver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +140,9 @@
       <workItem from="1599360577758" duration="4002000" />
       <workItem from="1599385322982" duration="818000" />
       <workItem from="1599486323208" duration="1015000" />
-      <workItem from="1599546208145" duration="2714000" />
+      <workItem from="1599546208145" duration="3962000" />
+      <workItem from="1599637179503" duration="2616000" />
+      <workItem from="1599659768124" duration="4584000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -175,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599572525885</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="now ncc returns absolute values">
+      <created>1599573826524</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1599573826524</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,13 +209,14 @@
     <MESSAGE value="created virtual environment and update readme.md" />
     <MESSAGE value="update" />
     <MESSAGE value="update on the arcitecture and added triplet loss" />
-    <option name="LAST_COMMIT_MESSAGE" value="update on the arcitecture and added triplet loss" />
+    <MESSAGE value="now ncc returns absolute values" />
+    <option name="LAST_COMMIT_MESSAGE" value="now ncc returns absolute values" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="72" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599330187857">
+    <state x="223" y="72" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599661611085">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="223" y="72" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1599330187857" />
+    <state x="223" y="72" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1599661611085" />
     <state x="537" y="219" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599486375524">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -221,30 +233,30 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="548" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1599330110154" />
-    <state width="1493" height="214" key="GridCell.Tab.0.bottom" timestamp="1599330335751">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1599660049360">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="214" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1599330335751" />
-    <state width="1493" height="214" key="GridCell.Tab.0.center" timestamp="1599330335751">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1599660049360" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1599660049360">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="214" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1599330335751" />
-    <state width="1493" height="214" key="GridCell.Tab.0.left" timestamp="1599330335751">
+    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1599660049360" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1599660049360">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="214" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1599330335751" />
-    <state width="1493" height="214" key="GridCell.Tab.0.right" timestamp="1599330335751">
+    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1599660049360" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1599660049360">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="214" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1599330335751" />
-    <state x="277" y="62" key="SettingsEditor" timestamp="1599330330830">
+    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1599660049360" />
+    <state x="277" y="62" key="SettingsEditor" timestamp="1599661606221">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1599330330830" />
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1599572532223">
+    <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1599661606221" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1599573832666">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1599572532223" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1599573832666" />
     <state x="585" y="106" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599317104106">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -263,6 +275,6 @@
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1599364679855" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/nusher$network.coverage" NAME="network Coverage Results" MODIFIED="1599330161660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nusher$network.coverage" NAME="network Coverage Results" MODIFIED="1599660003441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

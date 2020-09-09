@@ -14,8 +14,8 @@ import torch.nn as nn
 from torch import optim
 import torch.nn.functional as F
 
-from imgaug import augmenters as iaa
-import imgaug as ia
+#from imgaug import augmenters as iaa
+#import imgaug as ia
 
 import glob
 
@@ -90,7 +90,7 @@ class SiameseTriplet(Dataset):
     def __len__(self):
         return len(self.imageFolderDataset.imgs)
 
-
+'''
 class SiameseNetworkDataset(Dataset):
 
     def __init__(self, imageFolderDataset, transform=None, should_invert=True):
@@ -152,7 +152,7 @@ class ImgAugTransform:
     def __call__(self, img):
         img = np.array(img)
         return self.aug.augment_image(img)
-
+'''
 
 if __name__ == '__main__':
     class Config():
@@ -179,3 +179,13 @@ if __name__ == '__main__':
     example_batch = next(dataiter)
     concatenated = torch.cat((example_batch[0], example_batch[1], example_batch[2]), 0)
     imshow(torchvision.utils.make_grid(concatenated))
+
+    for i, data in enumerate(vis_dataloader, 0):
+        print("Step " + i)
+
+        anchor, positive, negative = data
+        # anchor, positive, negative = anchor.cuda(), positive.cuda(), negative.cuda()
+        anchor, positive, negative = anchor.cuda(), positive.cuda(), negative.cuda()
+        print("Data found")
+
+

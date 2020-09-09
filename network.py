@@ -151,6 +151,9 @@ class TripletLoss(nn.Module):
         self.lReLU = nn.LeakyReLU()
 
     def forward(self, distance_positive, distance_negative):
+        #Have to change this output
+
+
         losses = self.lReLU(distance_positive + distance_negative + self.margin)
 
         return losses.sum()
