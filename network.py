@@ -29,7 +29,7 @@ def get_test_input(img):
     #img_[1] = img[:,:,::-1].transpose((2,0,1))
     #img_ = img_[ :, :, :] / 255.0  # Add a channel at 0 (for batch) | Normalise
     img_ = torch.from_numpy(img_).float()     #Convert to float
-    #print(img_.shape)
+    print(img_.shape)
     img_ = Variable(img_).cuda()                   # Convert to Variable
     return img_
 
@@ -65,8 +65,8 @@ def patch_std(image, patch_shape):
 
 def channel_normalize(template):
     reshaped_template = template.clone().reshape(template.shape[0], -1)
-    reshaped_template.sub_(reshaped_template.mean(dim=-1, keepdim=True))
-    reshaped_template.div_(reshaped_template.std(dim=-1, keepdim=True, unbiased=False))
+    reshaped_template.sub(reshaped_template.mean(dim=-1, keepdim=True))
+    reshaped_template.div(reshaped_template.std(dim=-1, keepdim=True, unbiased=False))
 
     return reshaped_template.view_as(template)
 
@@ -138,6 +138,7 @@ class Convdev(nn.Module):
             neg_distance = torch.sum(neg_distance, (2, 3))
             # print(output.shape)
             neg_distance = neg_distance.sum() / 1024
+            print(neg_distance.shape)
             return pos_distance.abs(), neg_distance.abs()
 
 

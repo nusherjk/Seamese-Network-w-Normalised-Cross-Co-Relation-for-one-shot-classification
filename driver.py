@@ -7,6 +7,8 @@ from torch.utils.data import DataLoader, Dataset
 from scipy.stats import multivariate_normal
 import os
 
+
+torch.autograd.set_detect_anomaly(True)
 from config import Config
 from network import Convdev, TripletLoss
 from dataloader import *
@@ -77,7 +79,7 @@ if __name__ == '__main__':
 
 	print("load Dataloader")
 
-	train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=14, batch_size=Config.train_batch_size)
+	train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=1, batch_size=Config.train_batch_size)
 	print("load Dataloader Done")
 
 	# Multiply each image with mask to give attention to center of the image.
@@ -91,9 +93,11 @@ if __name__ == '__main__':
 	for epoch in range(0, Config.train_number_epochs):
 		print("epoch "  + str(epoch))
 		for i, data in enumerate(train_dataloader, 0):
-			print("Step " + i)
+			print("Step " + str(i))
 
 			anchor, positive, negative = data
+			print(anchor.shape)
+			print(positive.shape)
 			#anchor, positive, negative = anchor.cuda(), positive.cuda(), negative.cuda()
 			anchor, positive, negative = anchor.cuda(), positive.cuda(), negative.cuda()
 
