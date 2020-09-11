@@ -1,5 +1,5 @@
 #Training codes
-#from torch.utils.tensorboard import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 import torch
 from torch import optim
 import torchvision.datasets as dset
@@ -15,7 +15,8 @@ from dataloader import *
 
 import warnings
 warnings.filterwarnings("ignore")
-#writer = SummaryWriter()
+writer = SummaryWriter()
+
 def get_gaussian_mask():
 	#128 is image size
 	x, y = np.mgrid[0:1.0:128j, 0:1.0:128j] #128 is input size.
@@ -90,6 +91,7 @@ if __name__ == '__main__':
 	print("load gaussian mask Done")
 
 
+
 	for epoch in range(0, Config.train_number_epochs):
 		print("epoch "  + str(epoch))
 		for i, data in enumerate(train_dataloader, 0):
@@ -101,17 +103,24 @@ if __name__ == '__main__':
 			#anchor, positive, negative = anchor.cuda(), positive.cuda(), negative.cuda()
 			anchor, positive, negative = anchor.cuda(), positive.cuda(), negative.cuda()
 
+			concatenated = torch.cat((anchor, positive, negative), 0)
+			grid = torchvision.utils.make_grid(concatenated)
+			writer.add_image('images', grid, 0)
+			writer.add_graph(model, (anchor, positive, negative) )
+
 			anchor, positive, negative = anchor * gaussian_mask, positive * gaussian_mask, negative * gaussian_mask
 
 			optimizer.zero_grad()
 
 			positive_out, negative_out = model(anchor, positive, negative)
-			print(positive_out)
+			#print(positive_out)
 
 			triplet_loss = criterion( positive_out, negative_out)
 			#print(triplet_loss)
 			triplet_loss.backward()
 			optimizer.step()
+			print(triplet_loss)
+			writer.add_scalar('Loss/step', triplet_loss.item(), i)
 
 			if i % 10 == 0:
 				print("Epoch number {}\n Current loss {}\n".format(epoch, triplet_loss.item()))
@@ -124,9 +133,9 @@ if __name__ == '__main__':
 			torch.save(net, 'ckpts/model' + str(epoch) + '.pt')
 
 	show_plot(counter, loss_history, path='ckpts/loss.png')
-
+	writer.close()
 	'''for n_iter in range(100):
-		writer.add_scalar('Loss/train', np.random.random(), n_iter)
+		
 		writer.add_scalar('Loss/test', np.random.random(), n_iter)
 		writer.add_scalar('Accuracy/train', np.random.random(), n_iter)
 		writer.add_scalar('Accuracy/test', np.random.random(), n_iter)'''

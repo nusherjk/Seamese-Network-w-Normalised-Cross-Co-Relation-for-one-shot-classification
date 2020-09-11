@@ -19,11 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="fix inplace issue">
+    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="fix ncc and modified loss function">
+      <change afterPath="$PROJECT_DIR$/driver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +145,7 @@
       <workItem from="1599673551163" duration="660000" />
       <workItem from="1599713637536" duration="1569000" />
       <workItem from="1599741631619" duration="5223000" />
-      <workItem from="1599831094773" duration="2135000" />
+      <workItem from="1599831094773" duration="4845000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -202,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599719506553</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix ncc and modified loss function">
+      <created>1599833419551</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1599833419551</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +236,8 @@
     <MESSAGE value="now ncc returns absolute values" />
     <MESSAGE value="training file - driver.py" />
     <MESSAGE value="fix inplace issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix inplace issue" />
+    <MESSAGE value="fix ncc and modified loss function" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix ncc and modified loss function" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="72" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599661611085">
@@ -271,10 +280,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1599661606221" />
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1599731298765">
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1599833426783">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1599731298765" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1599833426783" />
     <state x="585" y="56" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599804944527">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
