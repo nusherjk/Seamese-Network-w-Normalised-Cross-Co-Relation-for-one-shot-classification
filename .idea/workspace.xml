@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="training file - driver.py">
+    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="fix inplace issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/driver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/network.py" afterDir="false" />
     </list>
@@ -141,7 +142,9 @@
       <workItem from="1599637179503" duration="2616000" />
       <workItem from="1599659768124" duration="4958000" />
       <workItem from="1599673551163" duration="660000" />
-      <workItem from="1599713637536" duration="1189000" />
+      <workItem from="1599713637536" duration="1569000" />
+      <workItem from="1599741631619" duration="5223000" />
+      <workItem from="1599831094773" duration="2135000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -192,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599664796355</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix inplace issue">
+      <created>1599719506553</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1599719506553</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +227,8 @@
     <MESSAGE value="update on the arcitecture and added triplet loss" />
     <MESSAGE value="now ncc returns absolute values" />
     <MESSAGE value="training file - driver.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="training file - driver.py" />
+    <MESSAGE value="fix inplace issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix inplace issue" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="72" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599661611085">
@@ -260,14 +271,14 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1599661606221" />
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1599664802136">
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1599731298765">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1599664802136" />
-    <state x="585" y="106" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599317104106">
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1599731298765" />
+    <state x="585" y="56" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599804944527">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="585" y="106" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1599317104106" />
+    <state x="585" y="56" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1599804944527" />
     <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599322601130">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -276,10 +287,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="478" y="0" width="579" height="834" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1599571644299" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1599364679855">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1599802282707">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1599364679855" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1599802282707" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/nusher$network.coverage" NAME="network Coverage Results" MODIFIED="1599660003441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

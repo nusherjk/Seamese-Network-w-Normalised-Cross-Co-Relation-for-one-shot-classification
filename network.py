@@ -63,13 +63,17 @@ def patch_std(image, patch_shape):
     return (patch_mean(image**2, patch_shape) - patch_mean(image, patch_shape)**2).sqrt()
 
 
-def channel_normalize(template):
+'''def channel_normalize(template):
     reshaped_template = template.clone().reshape(template.shape[0], -1)
-    reshaped_template.sub(reshaped_template.mean(dim=-1, keepdim=True))
-    reshaped_template.div(reshaped_template.std(dim=-1, keepdim=True, unbiased=False))
+    reshaped_template.sub_(reshaped_template.mean(dim=-1, keepdim=True))
+    reshaped_template.div_(reshaped_template.std(dim=-1, keepdim=True, unbiased=False))
 
     return reshaped_template.view_as(template)
-
+'''
+def channel_normalize(template):
+    mean = template.mean()
+    stddev = template.std()
+    return template.sub(mean).div(stddev)
 
 class Convdev(nn.Module):
     def __init__(self):
@@ -117,7 +121,6 @@ class Convdev(nn.Module):
         output_1 = self.forward_one(input1)
         output_2 = self.forward_one(input2)
 
-
         output_1 = channel_normalize(output_1)
         output_2 = channel_normalize(output_2)
         #print(output_1.shape)
@@ -125,21 +128,25 @@ class Convdev(nn.Module):
         #output_1 = output_1.view(1024)
         #output_2 = output_2.view(1024)
         pos_distance = torch.tensordot(output_1,output_2)
+        pos_distance = pos_distance.reshape([pos_distance.shape[0], pos_distance.shape[1]]).mean(dim=-1)
         #print(output.shape)
 
-        pos_distance = torch.sum(pos_distance, (2,3))
+        #pos_distance = torch.sum(pos_distance, (2,3))
         #print(output.shape)
-        pos_distance = pos_distance.sum()/1024
+        #pos_distance = pos_distance.sum()/1024
         #print(output.shape)
         if input3 != None:
             output_3 = self.forward_one(input3)
             output_3 = channel_normalize(output_3)
+            #print(output_3)
             neg_distance = torch.tensordot(output_1,output_3)
-            neg_distance = torch.sum(neg_distance, (2, 3))
+            neg_distance = neg_distance.reshape([neg_distance.shape[0], neg_distance.shape[1]]).mean(dim=-1)
+            #print()
+            #neg_distance = torch.sum(neg_distance, (2, 3))
             # print(output.shape)
-            neg_distance = neg_distance.sum() / 1024
-            print(neg_distance.shape)
-            return pos_distance.abs(), neg_distance.abs()
+            #neg_distance = neg_distance.sum() / 1024
+            #print(neg_distance.shape)
+            return pos_distance, neg_distance
 
 
         return pos_distance.abs()
@@ -155,7 +162,7 @@ class TripletLoss(nn.Module):
         #Have to change this output
 
 
-        losses = self.lReLU(distance_positive + distance_negative + self.margin)
+        losses = (1-distance_positive)**2 + (0-distance_negative)**2 + self.margin
 
         return losses.sum()
 
@@ -170,8 +177,8 @@ if __name__ == '__main__':
     tpl = TripletLoss()
 
     out1, out2  = model(img1, img2, img2)
-    loss = tpl(out1,out2)
-    print(loss)
+    #loss = tpl(out1,out2)
+    print(out1)
 
     #ncc_value = out1 #torch.sum(out)/n
     #print(ncc_value)

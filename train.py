@@ -96,8 +96,8 @@ if __name__ == '__main__':
 			print("Step " + str(i))
 
 			anchor, positive, negative = data
-			print(anchor.shape)
-			print(positive.shape)
+			#print(anchor.shape)
+			#print(positive.shape)
 			#anchor, positive, negative = anchor.cuda(), positive.cuda(), negative.cuda()
 			anchor, positive, negative = anchor.cuda(), positive.cuda(), negative.cuda()
 
@@ -109,7 +109,7 @@ if __name__ == '__main__':
 			print(positive_out)
 
 			triplet_loss = criterion( positive_out, negative_out)
-			print(triplet_loss)
+			#print(triplet_loss)
 			triplet_loss.backward()
 			optimizer.step()
 
