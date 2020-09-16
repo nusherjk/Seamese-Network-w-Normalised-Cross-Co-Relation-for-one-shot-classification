@@ -6,7 +6,7 @@ import torchvision.datasets as dset
 from torch.utils.data import DataLoader, Dataset
 from scipy.stats import multivariate_normal
 import os
-
+import gc
 
 torch.autograd.set_detect_anomaly(True)
 from config import Config
@@ -33,13 +33,13 @@ def get_gaussian_mask():
 	mask = torch.from_numpy(z)
 
 	return mask
-
+#torch.cuda.empty_cache()
 
 if __name__ == '__main__':
 
 	if (torch.cuda.is_available()):
 		# setting default to gpu
-		#torch.set_default_tensor_type('torch.cuda.FloatTensor')
+		torch.set_default_tensor_type('torch.cuda.FloatTensor')
 		print("cuda is available")
 
 	print("Load Config")
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
 	print("load Dataloader")
 
-	train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=1, batch_size=Config.train_batch_size)
+	train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=0, batch_size=Config.train_batch_size)
 	print("load Dataloader Done")
 
 	# Multiply each image with mask to give attention to center of the image.
@@ -94,8 +94,10 @@ if __name__ == '__main__':
 
 	for epoch in range(0, Config.train_number_epochs):
 		print("epoch "  + str(epoch))
-		for i, data in enumerate(train_dataloader, 0):
-			print("Step " + str(i))
+		torch.cuda.empty_cache()
+		for i, data in enumerate(train_dataloader):
+			#print("Step " + str(i))
+			#print("Step " + str(i))
 
 			anchor, positive, negative = data
 			#print(anchor.shape)
@@ -105,8 +107,8 @@ if __name__ == '__main__':
 
 			concatenated = torch.cat((anchor, positive, negative), 0)
 			grid = torchvision.utils.make_grid(concatenated)
-			writer.add_image('images', grid, 0)
-			writer.add_graph(model, (anchor, positive, negative) )
+			#writer.add_image('images', grid, 0)
+			#writer.add_graph(model, (anchor, positive, negative) )
 
 			anchor, positive, negative = anchor * gaussian_mask, positive * gaussian_mask, negative * gaussian_mask
 
@@ -119,18 +121,30 @@ if __name__ == '__main__':
 			#print(triplet_loss)
 			triplet_loss.backward()
 			optimizer.step()
-			print(triplet_loss)
-			writer.add_scalar('Loss/step', triplet_loss.item(), i)
+			#print(triplet_loss)
+			#writer.add_scalar('Loss/step', triplet_loss.item(), iteration_number)
 
 			if i % 10 == 0:
+				writer.add_scalar('Loss/step', triplet_loss.item(), iteration_number)
 				print("Epoch number {}\n Current loss {}\n".format(epoch, triplet_loss.item()))
 				iteration_number += 10
 				counter.append(iteration_number)
 				loss_history.append(triplet_loss.item())
+
 		if epoch % 20 == 0:
 			if not os.path.exists('ckpts/'):
 				os.mkdir('ckpts')
-			torch.save(net, 'ckpts/model' + str(epoch) + '.pt')
+
+			PATH =  'ckpts/model' + str(epoch) + '.pt'
+			torch.save({
+					'epoch': epoch,
+					'model_state_dict': model.state_dict(),
+					'optimizer_state_dict': optimizer.state_dict(),
+					'loss': triplet_loss.item(),
+				}, PATH)
+
+		gc.collect()
+			#torch.save(model,  'ckpts/model' + str(epoch) + '.pt')
 
 	show_plot(counter, loss_history, path='ckpts/loss.png')
 	writer.close()

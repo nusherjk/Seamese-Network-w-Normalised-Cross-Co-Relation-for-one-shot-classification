@@ -146,7 +146,7 @@ class Convdev(nn.Module):
             # print(output.shape)
             #neg_distance = neg_distance.sum() / 1024
             #print(neg_distance.shape)
-            return pos_distance, neg_distance
+            return pos_distance.abs(), neg_distance.abs()
 
 
         return pos_distance.abs()
@@ -169,7 +169,7 @@ class TripletLoss(nn.Module):
 
 
 
-
+'''
 if __name__ == '__main__':
     img1 = get_test_input(img)
     img2 = get_test_input(img)
@@ -182,4 +182,4 @@ if __name__ == '__main__':
 
     #ncc_value = out1 #torch.sum(out)/n
     #print(ncc_value)
-    #print(out2.shape)
+    #print(out2.shape)'''

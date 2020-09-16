@@ -152,7 +152,7 @@ class ImgAugTransform:
     def __call__(self, img):
         img = np.array(img)
         return self.aug.augment_image(img)
-'''
+
 
 if __name__ == '__main__':
     class Config():
@@ -189,3 +189,4 @@ if __name__ == '__main__':
         print("Data found")
 
 
+'''
