@@ -19,3 +19,11 @@ Using Seamese Network and Normalised Cross Co-Relation.
 3. Run ```~/env/Scripts/activate.bat```
 4. `pip install -r requirements.txt`
 
+### Train
+
+- change config.py
+- run ``` python train.py ```
+
+### Test
+
+- run ``` python test.py ```
