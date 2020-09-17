@@ -69,10 +69,10 @@ if __name__ == '__main__':
 
 	model = Convdev().cuda()
 	#model = Convdev()
-	criterion = TripletLoss(margin=1.0)
+	criterion = TripletLoss(margin=0.0)
 
 	#Optimizer
-	optimizer = optim.Adam(model.parameters(),lr = 0.0005)
+	optimizer = optim.Adam(model.parameters(),lr = 5)
 
 	counter = []
 	loss_history = []

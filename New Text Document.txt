@@ -1,0 +1,6 @@
+correct:  453
+completely correct batches %  0.9977973568281938
+Total correct examples:  14496
+examplewise correct %  0.9977973568281938
+
+
