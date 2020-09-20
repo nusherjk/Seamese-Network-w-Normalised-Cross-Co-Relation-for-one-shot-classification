@@ -72,7 +72,7 @@ if __name__ == '__main__':
 	criterion = TripletLoss(margin=0.0)
 
 	#Optimizer
-	optimizer = optim.Adam(model.parameters(),lr = 5)
+	optimizer = optim.Adam(model.parameters(),lr = .005)
 
 	counter = []
 	loss_history = []
