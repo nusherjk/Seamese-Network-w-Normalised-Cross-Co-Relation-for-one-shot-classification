@@ -4,7 +4,7 @@ import numpy as np
 
 
 import cv2
-
+import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
 
@@ -121,14 +121,11 @@ class Convdev(nn.Module):
         output_1 = self.forward_one(input1)
         output_2 = self.forward_one(input2)
 
-        output_1 = channel_normalize(output_1)
-        output_2 = channel_normalize(output_2)
-        #print(output_1.shape)
-        #print(output_2.shape)
-        #output_1 = output_1.view(1024)
-        #output_2 = output_2.view(1024)
-        pos_distance = torch.tensordot(output_1,output_2)
-        pos_distance = pos_distance.reshape([pos_distance.shape[0], pos_distance.shape[1]]).mean(dim=-1)
+        #output_1 = channel_normalize(output_1)
+        #output_2 = channel_normalize(output_2)
+
+        #pos_distance = torch.tensordot(output_1,output_2)
+        #pos_distance = pos_distance.reshape([pos_distance.shape[0], pos_distance.shape[1]]).mean(dim=-1)
         #print(output.shape)
 
         #pos_distance = torch.sum(pos_distance, (2,3))
@@ -137,19 +134,19 @@ class Convdev(nn.Module):
         #print(output.shape)
         if input3 != None:
             output_3 = self.forward_one(input3)
-            output_3 = channel_normalize(output_3)
+            #output_3 = channel_normalize(output_3)
             #print(output_3)
-            neg_distance = torch.tensordot(output_1,output_3)
-            neg_distance = neg_distance.reshape([neg_distance.shape[0], neg_distance.shape[1]]).mean(dim=-1)
-            #print()
+            #neg_distance = torch.tensordot(output_1,output_3)
+            #neg_distance = neg_distance.reshape([neg_distance.shape[0], neg_distance.shape[1]]).mean(dim=-1)
             #neg_distance = torch.sum(neg_distance, (2, 3))
             # print(output.shape)
             #neg_distance = neg_distance.sum() / 1024
             #print(neg_distance.shape)
-            return pos_distance.abs(), neg_distance.abs()
+            #return pos_distance.abs(), neg_distance.abs()
+            return output_1, output_2, output_3
 
 
-        return pos_distance.abs()
+        return output_1, output_2
 
 
 class TripletLoss(nn.Module):
@@ -158,9 +155,10 @@ class TripletLoss(nn.Module):
         self.margin = margin
         self.lReLU = nn.LeakyReLU()
 
-    def forward(self, distance_positive, distance_negative):
+    def forward(self, anchor, positive, negative ):
         #Have to change this output
-
+        distance_positive = F.cosine_similarity(anchor, positive)  # Each is batch X 512
+        distance_negative = F.cosine_similarity(anchor, negative)
 
         losses = (1-distance_positive)**2 + (0-distance_negative)**2 + self.margin
 

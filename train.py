@@ -72,7 +72,7 @@ if __name__ == '__main__':
 	criterion = TripletLoss(margin=0.0)
 
 	#Optimizer
-	optimizer = optim.Adam(model.parameters(),lr = 5)
+	optimizer = optim.Adam(model.parameters(),lr = .005)
 
 	counter = []
 	loss_history = []
@@ -114,10 +114,10 @@ if __name__ == '__main__':
 
 			optimizer.zero_grad()
 
-			positive_out, negative_out = model(anchor, positive, negative)
+			anchor_out, positive_out, negative_out = model(anchor, positive, negative)
 			#print(positive_out)
 
-			triplet_loss = criterion( positive_out, negative_out)
+			triplet_loss = criterion( anchor_out, positive_out, negative_out)
 			#print(triplet_loss)
 			triplet_loss.backward()
 			optimizer.step()

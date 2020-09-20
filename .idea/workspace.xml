@@ -19,8 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="update on test files and training method">
+    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="update 17th sept">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +149,7 @@
       <workItem from="1600002534222" duration="1829000" />
       <workItem from="1600012250036" duration="1226000" />
       <workItem from="1600087872914" duration="5232000" />
-      <workItem from="1600265836258" duration="6740000" />
+      <workItem from="1600265836258" duration="11230000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -226,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600272297562</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update 17th sept">
+      <created>1600351652503</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1600351652503</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +264,8 @@
     <MESSAGE value="fix ncc and modified loss function" />
     <MESSAGE value="implemented tensorboard" />
     <MESSAGE value="update on test files and training method" />
-    <option name="LAST_COMMIT_MESSAGE" value="update on test files and training method" />
+    <MESSAGE value="update 17th sept" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 17th sept" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="72" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599661611085">
@@ -298,14 +308,18 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1599661606221" />
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1600272298810">
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1600351657274">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1600272298810" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1600351657274" />
     <state x="585" y="56" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599804944527">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="585" y="56" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1599804944527" />
+    <state x="667" y="151" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1600351605511">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="667" y="151" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1536.834@0.0.1536.834" timestamp="1600351605511" />
     <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599322601130">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

@@ -158,15 +158,15 @@ for i in range(total - 1):
         neg = neg.unsqueeze(0)
 
         concatenated = torch.cat((anc, pos, neg), 0)
-        positive_distance, negative_distance = net(Variable(anc).cuda() * gaussian_mask, Variable(pos).cuda() * gaussian_mask,
+        output1, output2, output3 = net(Variable(anc).cuda() * gaussian_mask, Variable(pos).cuda() * gaussian_mask,
                                         Variable(neg).cuda() * gaussian_mask)
 
-        #output1 = torch.unsqueeze(output1, 0)  # anc
-        #output2 = torch.unsqueeze(output2, 0)  # pos
+        output1 = torch.unsqueeze(output1, 0)  # anc
+        output2 = torch.unsqueeze(output2, 0)  # pos
         #output3 = torch.unsqueeze(output3, 0)  # neg
 
-        #d1 = F.cosine_similarity(output1, output2)  # anc - pos
-        #d2 = F.cosine_similarity(output1, output3)  # anc - neg
+        d1 = F.cosine_similarity(output1, output2)  # anc - pos
+        d2 = F.cosine_similarity(output1, output3)  # anc - neg
 
         # if abs(d1 - d2) > 0.5:
         print("positive output for {} th sample {}".format(i, positive_distance))
