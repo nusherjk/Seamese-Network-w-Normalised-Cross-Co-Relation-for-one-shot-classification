@@ -4,3 +4,62 @@ Total correct examples:  14496
 examplewise correct %  0.9977973568281938
 
 
+
+
+
+
+
+
+
+
+360 epoch
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.2101e-10], grad_fn=<AbsBackward>)
+FP : 0
+FN : 14496
+
+160 epoch
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+positive output for 452 th sample tensor([2.9591e-08], grad_fn=<AbsBackward>)
+
+

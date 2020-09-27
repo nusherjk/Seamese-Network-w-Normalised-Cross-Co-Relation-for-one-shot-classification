@@ -128,7 +128,7 @@ dataiter = iter(test_dataloader)
 x0, _, _ = next(dataiter)
 net = Convdev()
 optimizer = optim.Adam(net.parameters(),lr = 0.0005)
-PATH = 'ckpts/model140.pt'
+PATH = 'ckpts/model160.pt'
 
 checkpoint = torch.load(PATH)
 net.load_state_dict(checkpoint['model_state_dict'])
@@ -138,6 +138,11 @@ loss = checkpoint['loss']
 
 #net = model.load_state_dict(torch.load(PATH)).cuda()
 net.eval()
+
+FP = 0
+FN = 0
+TP = 0
+TN =0
 
 correct = 0
 total_correct = 0
@@ -170,10 +175,16 @@ for i in range(total - 1):
 
         # if abs(d1 - d2) > 0.5:
         print("positive output for {} th sample {}".format(i, positive_distance))
-        if positive_distance> 0.5:
-            batch_correct += 1
-            print("positive output for {} th sample {}".format(i, positive_distance))
-            total_correct += 1
+        if negative_distance< 0.3:
+            FN +=1
+        else:
+            FP+=1
+
+
+
+            #batch_correct += 1
+            #print("positive output for {} th sample {}".format(i, positive_distance))
+            #total_correct += 1
 '''
         if negative_distance < 0.5:
             batch_correct += 1
@@ -189,8 +200,10 @@ for i in range(total - 1):
     if batch_correct == len(negatives):
         correct += 1
 '''
-print('correct: ', correct//2)
-print('completely correct batches % ', correct /(2* total))
+#print('correct: ', correct//2)
+#print('completely correct batches % ', correct /(2* total))
 
-print('Total correct examples: ', total_correct)
-print('examplewise correct % ', total_correct / (total*2 * len(negatives)))
+#print('Total correct examples: ', total_correct)
+#print('examplewise correct % ', total_correct / (total*2 * len(negatives)))
+print("FP : {}".format(FP))
+print("FN : {}".format(FN))
