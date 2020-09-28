@@ -75,6 +75,19 @@ def channel_normalize(template):
     stddev = template.std()
     return template.sub(mean).div(stddev)
 
+
+def ncc(embedding1 , embedding2):
+    norm_embedding_1  = channel_normalize(embedding1)
+    norm_embedding_2 = channel_normalize(embedding2)
+    dot_product = torch.tensordot(norm_embedding_1,norm_embedding_2)
+
+    # get resized..
+
+    dot_product = dot_product.reshape([dot_product.shape[0], dot_product.shape[1]]).mean(dim=-1)
+
+    return  dot_product.abs()
+
+
 class Convdev(nn.Module):
     def __init__(self):
         super(Convdev, self).__init__()
@@ -150,34 +163,38 @@ class Convdev(nn.Module):
 
 
 class TripletLoss(nn.Module):
-    def __init__(self, margin=1.0):
+    def __init__(self, margin=100.0):
         super(TripletLoss, self).__init__()
         self.margin = margin
-        self.lReLU = nn.LeakyReLU()
+        self.relu = nn.ReLU()
 
     def forward(self, anchor, positive, negative ):
         #Have to change this output
-        distance_positive = F.cosine_similarity(anchor, positive)  # Each is batch X 512
-        distance_negative = F.cosine_similarity(anchor, negative)
+        #distance_positive = F.cosine_similarity(anchor, positive)  # Each is batch X 512
+        #distance_negative = F.cosine_similarity(anchor, negative)
+        distance_positive = 1-ncc(anchor, positive)
+        distance_negative = 1-ncc(anchor, negative)
 
-        losses = (1-distance_positive)**2 + (0-distance_negative)**2 + self.margin
+
+        losses = self.relu((distance_positive) - (distance_negative) + self.margin)
 
         return losses.sum()
 
 
 
 
-'''
+"""
 if __name__ == '__main__':
     img1 = get_test_input(img)
     img2 = get_test_input(img)
     model = Convdev().cuda()
     tpl = TripletLoss()
 
-    out1, out2  = model(img1, img2, img2)
-    #loss = tpl(out1,out2)
-    print(out1)
+    out1, out2,out3  = model(img1, img2, img2)
+    loss = tpl(out1,out2, out3 )
+    print(out1.shape)
+    print(loss)
 
     #ncc_value = out1 #torch.sum(out)/n
     #print(ncc_value)
-    #print(out2.shape)'''
+    #print(out2.shape)'''"""

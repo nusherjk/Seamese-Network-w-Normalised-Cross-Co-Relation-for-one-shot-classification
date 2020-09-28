@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
 	model = Convdev().cuda()
 	#model = Convdev()
-	criterion = TripletLoss(margin=0.0)
+	criterion = TripletLoss()
 
 	#Optimizer
 	optimizer = optim.Adam(model.parameters(),lr = .005)
@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
 	for epoch in range(0, Config.train_number_epochs):
 		print("epoch "  + str(epoch))
-		torch.cuda.empty_cache()
+		# torch.cuda.empty_cache()
 		for i, data in enumerate(train_dataloader):
 			#print("Step " + str(i))
 			#print("Step " + str(i))
@@ -126,7 +126,7 @@ if __name__ == '__main__':
 
 			if i % 10 == 0:
 				writer.add_scalar('Loss/step', triplet_loss.item(), iteration_number)
-				print("Epoch number {}\n Current loss {}\n".format(epoch, triplet_loss.item()))
+				print("Epoch number {}\n Current loss {}\n ".format(epoch, triplet_loss.item()))
 				iteration_number += 10
 				counter.append(iteration_number)
 				loss_history.append(triplet_loss.item())
