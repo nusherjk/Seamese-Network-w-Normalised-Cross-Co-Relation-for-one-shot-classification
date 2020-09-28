@@ -19,12 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="lr fixed">
+    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="changes in driver">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/New Text Document.txt" beforeDir="false" afterPath="$PROJECT_DIR$/New Text Document.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/network.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +154,7 @@
       <workItem from="1600012250036" duration="1226000" />
       <workItem from="1600087872914" duration="5232000" />
       <workItem from="1600265836258" duration="6740000" />
-      <workItem from="1601182804086" duration="2177000" />
+      <workItem from="1601182804086" duration="3711000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -242,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600600249705</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="changes in driver">
+      <created>1601208618699</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1601208618699</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +277,8 @@
     <MESSAGE value="implemented tensorboard" />
     <MESSAGE value="update on test files and training method" />
     <MESSAGE value="lr fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="lr fixed" />
+    <MESSAGE value="changes in driver" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes in driver" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="72" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599661611085">
@@ -291,10 +297,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="637" y="173" key="EnvironmentVariablesDialog/0.0.1536.834@0.0.1536.834" timestamp="1599330004447" />
-    <state x="548" y="172" key="FileChooserDialogImpl" timestamp="1599330110154">
+    <state x="548" y="172" key="FileChooserDialogImpl" timestamp="1601208597192">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="548" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1599330110154" />
+    <state x="548" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1601208597192" />
     <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1599660049360">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -315,10 +321,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1600774382966" />
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1600600253073">
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1601208622097">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1600600253073" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1601208622097" />
     <state x="585" y="56" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599804944527">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

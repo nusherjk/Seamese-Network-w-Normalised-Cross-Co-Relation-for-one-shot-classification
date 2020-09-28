@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
 
 	#load checkpoints
-	PATH = 'ckpts/model480.pt'
+	PATH = 'ckpts/model500.pt'
 	checkpoint = torch.load(PATH)
 	model.load_state_dict(checkpoint['model_state_dict'])
 	optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
