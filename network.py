@@ -71,20 +71,20 @@ def patch_std(image, patch_shape):
     return reshaped_template.view_as(template)
 '''
 def channel_normalize(template):
-    mean = template.mean()
-    stddev = template.std()
+    template= template.reshape([template.shape[0], template.shape[1]])
+    mean = template.mean(dim =-1)
+    mean = mean.unsqueeze(1).repeat(1, template.shape[1] )
+    stddev = template.std(dim =-1)
+    stddev = stddev.unsqueeze(1).repeat(1, template.shape[1] )
     return template.sub(mean).div(stddev)
 
 
 def ncc(embedding1 , embedding2):
     norm_embedding_1  = channel_normalize(embedding1)
     norm_embedding_2 = channel_normalize(embedding2)
-    dot_product = torch.tensordot(norm_embedding_1,norm_embedding_2)
-
-    # get resized..
-
-    dot_product = dot_product.reshape([dot_product.shape[0], dot_product.shape[1]]).mean(dim=-1)
-
+    dot_product = torch.bmm(norm_embedding_1.view(embedding1.shape[0],1,embedding2.shape[1]),
+                            norm_embedding_2.view(embedding2.shape[0],embedding2.shape[1], 1))
+    dot_product = dot_product.reshape([dot_product.shape[0]]).div(embedding2.shape[1])
     return  dot_product.abs()
 
 
@@ -163,7 +163,7 @@ class Convdev(nn.Module):
 
 
 class TripletLoss(nn.Module):
-    def __init__(self, margin=100.0):
+    def __init__(self, margin=1.0):
         super(TripletLoss, self).__init__()
         self.margin = margin
         self.relu = nn.ReLU()
