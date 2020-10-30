@@ -128,7 +128,7 @@ dataiter = iter(test_dataloader)
 x0, _, _ = next(dataiter)
 net = Convdev()
 optimizer = optim.Adam(net.parameters(),lr = 0.0005)
-PATH = 'ckpts/model140.pt'
+PATH = 'ckpts/model40.pt'
 
 checkpoint = torch.load(PATH)
 net.load_state_dict(checkpoint['model_state_dict'])
@@ -161,36 +161,42 @@ for i in range(total - 1):
         output1, output2, output3 = net(Variable(anc).cuda() * gaussian_mask, Variable(pos).cuda() * gaussian_mask,
                                         Variable(neg).cuda() * gaussian_mask)
 
-        output1 = torch.unsqueeze(output1, 0)  # anc
-        output2 = torch.unsqueeze(output2, 0)  # pos
+        #output1 = torch.unsqueeze(output1, 0)  # anc
+        #output2 = torch.unsqueeze(output2, 0)  # pos
         #output3 = torch.unsqueeze(output3, 0)  # neg
 
-        d1 = F.cosine_similarity(output1, output2)  # anc - pos
-        d2 = F.cosine_similarity(output1, output3)  # anc - neg
+        #d1 = F.cosine_similarity(output1, output2)  # anc - pos
+        #d2 = F.cosine_similarity(output1, output3)  # anc - neg
+
+        d1 = ncc(output1, output2)
+        d2 = ncc(output1,output3)
+        positive_distance = d1
+        negative_distance = d2
 
         # if abs(d1 - d2) > 0.5:
-        print("positive output for {} th sample {}".format(i, positive_distance))
-        if positive_distance> 0.5:
+        print("positive output for {} th sample {} ".format(i, positive_distance))
+        print("negative output for {} th sample {} ".format(i, negative_distance))
+        """if positive_distance> 0.5:
             batch_correct += 1
             print("positive output for {} th sample {}".format(i, positive_distance))
-            total_correct += 1
-'''
+            total_correct += 1"""
+        '''
         if negative_distance < 0.5:
             batch_correct += 1
             print("negative output for {} th sample {}".format(i, negative_distance))
             total_correct +=1'''
-'''
+
         if d1 > d2:
             batch_correct += 1
             # correct+=1
             total_correct += 1
-'''
-'''
+
     if batch_correct == len(negatives):
         correct += 1
-'''
-print('correct: ', correct//2)
-print('completely correct batches % ', correct /(2* total))
+
+print('correct: ', correct)
+print('completely correct batches % ', correct /( total))
 
 print('Total correct examples: ', total_correct)
-print('examplewise correct % ', total_correct / (total*2 * len(negatives)))
+print('examplewise correct % ', total_correct / (total * len(negatives)))
+

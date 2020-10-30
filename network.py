@@ -9,7 +9,8 @@ from torch.utils.data import DataLoader
 from torch.autograd import Variable
 
 # setting default to gpu
-torch.set_default_tensor_type('torch.cuda.FloatTensor')
+if torch.cuda.is_available():
+    torch.set_default_tensor_type('torch.cuda.FloatTensor')
 
 # Still does not have batch training.[FIXED]
 

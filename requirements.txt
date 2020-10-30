@@ -13,6 +13,8 @@ pyparsing==2.4.7
 python-dateutil==2.8.1
 scipy==1.5.2
 six==1.15.0
-torch==1.6.0 -f https://download.pytorch.org/whl/torch_stable.html
-torchvision==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
-virtualenv==20.0.31
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.6.0
+torchvision==0.7.0
+cudatoolkit==10.2
+
