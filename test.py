@@ -21,7 +21,7 @@ from scipy.stats import multivariate_normal
 
 class Config():
     training_dir = "crops/"
-    testing_dir = "crops_test/"
+    testing_dir = "bbox_test/"
 
 
 transforms = torchvision.transforms.Compose([
@@ -126,9 +126,9 @@ siamese_dataset = Siamese_Triplet_Test(imageFolderDataset=folder_dataset_test, t
 test_dataloader = DataLoader(siamese_dataset, num_workers=0, batch_size=1, shuffle=False)
 dataiter = iter(test_dataloader)
 x0, _, _ = next(dataiter)
-net = Convdev()
+net = Convdev().cuda()
 optimizer = optim.Adam(net.parameters(),lr = 0.0005)
-PATH = 'ckpts/model40.pt'
+PATH = 'ckpts/model20.pt'
 
 checkpoint = torch.load(PATH)
 net.load_state_dict(checkpoint['model_state_dict'])

@@ -2,7 +2,8 @@ import torch
 import torch.nn as nn
 import numpy as np
 
-
+import torchvision
+from torchvision.utils import make_grid, save_image
 import cv2
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
@@ -120,12 +121,20 @@ class Convdev(nn.Module):
         #out = self.pool(out)
 
         out = self.lReLU(self.batchnorm1(self.layer1(x)))
+
         out = self.lReLU(self.batchnorm2(self.layer2(out)))
+
         out = self.lReLU(self.batchnorm3(self.layer3(out)))
+
         out = self.lReLU(self.batchnorm4(self.layer4(out)))
+
         out = self.lReLU(self.batchnorm5(self.layer5(out)))
+
         out = self.lReLU(self.batchnorm6(self.layer6(out)))
+
         out = self.lReLU(self.batchnorm7(self.layer7(out)))
+
+
         #out = self.lReLU(self.batchnorm8(self.layer8(out)))
         out = self.pool(out)
         #print(out.shape)
