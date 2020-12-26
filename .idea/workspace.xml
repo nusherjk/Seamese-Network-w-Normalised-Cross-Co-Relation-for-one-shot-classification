@@ -20,10 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="dataloader_length.py add">
-      <change afterPath="$PROJECT_DIR$/layerimages.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmctest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +59,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.layerimages">
+  <component name="RunManager" selected="Python.cmctest">
     <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
       <module name="Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,6 +71,50 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cmctest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\User\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cmctest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="countrer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\User\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/person-re-identification-check-eval-code-master/data" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/person-re-identification-check-eval-code-master/data/countrer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="layerimages" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -146,6 +188,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.cmctest" />
+        <item itemvalue="Python.countrer" />
         <item itemvalue="Python.layerimages" />
         <item itemvalue="Python.network" />
       </list>
@@ -189,7 +233,8 @@
       <workItem from="1607436222101" duration="3822000" />
       <workItem from="1607492748320" duration="1587000" />
       <workItem from="1608209246901" duration="1594000" />
-      <workItem from="1608698490178" duration="44000" />
+      <workItem from="1608698490178" duration="720000" />
+      <workItem from="1608705513298" duration="13464000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -296,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604080559096</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="dataloader_length.py add">
+      <created>1608700794762</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1608700794762</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,66 +384,30 @@
     <option name="LAST_COMMIT_MESSAGE" value="dataloader_length.py add" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="72" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599661611085">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1608971567243">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="223" y="72" width="1089" height="761" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1599661611085" />
-    <state x="537" y="219" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599486375524">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1608971567243" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1608971567243">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="537" y="219" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834@0.0.1536.834" timestamp="1599486375524" />
-    <state x="548" y="122" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1599329877112">
+    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1608971567243" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1608971567243">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="548" y="122" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.834@0.0.1536.834" timestamp="1599329877112" />
-    <state x="637" y="173" key="EnvironmentVariablesDialog" timestamp="1599330004447">
+    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1608971567243" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1608971567243">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="637" y="173" key="EnvironmentVariablesDialog/0.0.1536.834@0.0.1536.834" timestamp="1599330004447" />
-    <state x="548" y="172" key="FileChooserDialogImpl" timestamp="1599330110154">
+    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1608971567243" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1608700802083">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="548" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1599330110154" />
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1599660049360">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1599660049360" />
-    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1599660049360">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1599660049360" />
-    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1599660049360">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1599660049360" />
-    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1599660049360">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1599660049360" />
-    <state x="277" y="62" key="SettingsEditor" timestamp="1599661606221">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1599661606221" />
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1604082191041">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1604082191041" />
-    <state x="585" y="56" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599804944527">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="585" y="56" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1599804944527" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1608700802083" />
     <state x="667" y="151" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602350995464">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="667" y="151" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1536.834@0.0.1536.834" timestamp="1602350995464" />
-    <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599322601130">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1599322601130" />
-    <state x="478" y="0" width="579" height="834" key="find.popup" timestamp="1599571644299">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="478" y="0" width="579" height="834" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1599571644299" />
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1600347420179">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -409,6 +425,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/nusher$countrer.coverage" NAME="countrer Coverage Results" MODIFIED="1608966933926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/person-re-identification-check-eval-code-master/data" />
     <SUITE FILE_PATH="coverage/nusher$network.coverage" NAME="network Coverage Results" MODIFIED="1599660003441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nusher$cmctest.coverage" NAME="cmctest Coverage Results" MODIFIED="1608971567228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

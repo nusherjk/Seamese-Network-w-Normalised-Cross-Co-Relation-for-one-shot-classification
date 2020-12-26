@@ -21,7 +21,7 @@ from scipy.stats import multivariate_normal
 
 class Config():
     training_dir = "crops/"
-    testing_dir = "bbox_test/"
+    testing_dir = "campus/"
 
 
 transforms = torchvision.transforms.Compose([
