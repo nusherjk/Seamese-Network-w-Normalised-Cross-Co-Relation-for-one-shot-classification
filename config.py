@@ -1,5 +1,5 @@
 class Config():
-	training_dir = "bbox_train/"
-	testing_dir = "crops_test/"
+	training_dir = "campus/train/"
+	testing_dir = "campus/test/"
 	train_batch_size = 16
-	train_number_epochs = 61
+	train_number_epochs = 200

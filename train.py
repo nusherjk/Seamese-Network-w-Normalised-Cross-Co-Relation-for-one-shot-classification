@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
 	print("load Dataloader")
 
-	train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=0, batch_size=Config.train_batch_size)
+	train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=2, batch_size=Config.train_batch_size)
 	print("load Dataloader Done")
 
 	# Multiply each image with mask to give attention to center of the image.
@@ -131,7 +131,7 @@ if __name__ == '__main__':
 				counter.append(iteration_number)
 				loss_history.append(triplet_loss.item())
 
-		if epoch % 20 == 0:
+		if epoch % 10 == 0:
 			if not os.path.exists('ckpts/'):
 				os.mkdir('ckpts')
 

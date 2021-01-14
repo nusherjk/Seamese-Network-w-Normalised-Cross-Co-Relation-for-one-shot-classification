@@ -19,10 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="dataloader_length.py add">
-      <change afterPath="$PROJECT_DIR$/cmctest.py" afterDir="false" />
+    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="ncc fix">
+      <change afterPath="$PROJECT_DIR$/data/galary_cam.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/gallary_id.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/query_cam.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/query_gallery_distance.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/query_id.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmctest.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmctest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloader_length.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader_length.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +53,9 @@
   </component>
   <component name="JupyterTrust" id="31203649-dbd5-4c5c-a266-b76fa6ec76b2" />
   <component name="ProjectId" id="1h61mAMjSatkLlb6ArYaNjp4T29" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -51,15 +63,9 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="Docker" />
   </component>
-  <component name="RunManager" selected="Python.cmctest">
+  <component name="RunManager" selected="Python.dataloader_length">
     <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
       <module name="Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,64 +79,20 @@
       <option name="ADDITIONAL_ARGS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="cmctest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="dataloader_length" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\User\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\Strix\AppData\Local\Programs\Python\Python39\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cmctest.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="countrer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\User\AppData\Local\Programs\Python\Python38\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/person-re-identification-check-eval-code-master/data" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/person-re-identification-check-eval-code-master/data/countrer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="layerimages" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/layerimages.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataloader_length.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -188,9 +150,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.cmctest" />
-        <item itemvalue="Python.countrer" />
-        <item itemvalue="Python.layerimages" />
+        <item itemvalue="Python.dataloader_length" />
         <item itemvalue="Python.network" />
       </list>
     </recent_temporary>
@@ -227,14 +187,13 @@
       <workItem from="1602338943345" duration="5183000" />
       <workItem from="1603390921847" duration="611000" />
       <workItem from="1603571311734" duration="321000" />
-      <workItem from="1604066764650" duration="6341000" />
-      <workItem from="1604549518813" duration="672000" />
-      <workItem from="1604827457220" duration="22741000" />
-      <workItem from="1607436222101" duration="3822000" />
-      <workItem from="1607492748320" duration="1587000" />
-      <workItem from="1608209246901" duration="1594000" />
-      <workItem from="1608698490178" duration="720000" />
-      <workItem from="1608705513298" duration="13464000" />
+      <workItem from="1604066764650" duration="4187000" />
+      <workItem from="1609340665826" duration="2000" />
+      <workItem from="1609584330843" duration="604000" />
+      <workItem from="1609670588497" duration="3000" />
+      <workItem from="1609674935233" duration="3000" />
+      <workItem from="1609918303682" duration="756000" />
+      <workItem from="1610597212811" duration="13818000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -334,21 +293,7 @@
       <option name="project" value="LOCAL" />
       <updated>1601390929038</updated>
     </task>
-    <task id="LOCAL-00015" summary="dataloader_length.py add">
-      <created>1604080559096</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1604080559096</updated>
-    </task>
-    <task id="LOCAL-00016" summary="dataloader_length.py add">
-      <created>1608700794762</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1608700794762</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,53 +325,10 @@
     <MESSAGE value="update 17th sept" />
     <MESSAGE value="update ncc and fix triplet loss with a increase of margin" />
     <MESSAGE value="ncc fix" />
-    <MESSAGE value="dataloader_length.py add" />
-    <option name="LAST_COMMIT_MESSAGE" value="dataloader_length.py add" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1608971567243">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1608971567243" />
-    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1608971567243">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1608971567243" />
-    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1608971567243">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1608971567243" />
-    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1608971567243">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1608971567243" />
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1608700802083">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1608700802083" />
-    <state x="667" y="151" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602350995464">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="667" y="151" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1536.834@0.0.1536.834" timestamp="1602350995464" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1600347420179">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1600347420179" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test.py</url>
-          <line>80</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="ncc fix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/nusher$countrer.coverage" NAME="countrer Coverage Results" MODIFIED="1608966933926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/person-re-identification-check-eval-code-master/data" />
     <SUITE FILE_PATH="coverage/nusher$network.coverage" NAME="network Coverage Results" MODIFIED="1599660003441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/nusher$cmctest.coverage" NAME="cmctest Coverage Results" MODIFIED="1608971567228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Seamese_Network_w_Normalised_Cross_Co_Relation_for_one_shot_classification$dataloader_length.coverage" NAME="dataloader_length Coverage Results" MODIFIED="1610601506378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

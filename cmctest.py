@@ -37,8 +37,8 @@ def get_test_input(img):
 
 
 class Config():
-    training_dir = "crops/"
-    testing_dir = "campus/"
+    training_dir = "campus/train/"
+    testing_dir = "campus/test/"
     data_dir = "data/"
     galaryid = "data/gallary_id.txt"
     galarycam = "data/galary_cam.txt"
@@ -72,11 +72,57 @@ def get_gaussian_mask():
 
 
 
+def cmc(querys, gallery, topk):
+    ret = np.zeros(topk)
+    valid_queries = 0
+    all_rank = []
+    sum_rank = np.zeros(topk)
+    for query in querys:
+        q_id = query[0]
+        q_feature = query[1]
+        # Calculate the distances for each query
+        distmat = []
+        for img, feature in gallery:
+            # Get the label from the image
+            name,_,_ = get_info(img)  # id of the gallary image.
+            dist = np.linalg.norm(q_feature - feature)
+            distmat.append([name, dist, img])
+
+        # Sort the results for each query
+        distmat.sort(key=custom_sort)
+        # Find matches
+        matches = np.zeros(len(distmat))
+        # Zero if no match 1 if match
+        for i in range(0, len(distmat)):
+            if distmat[i][0] == q_id:
+                # Match found
+                matches[i] = 1
+        rank = np.zeros(topk)
+        for i in range(0, topk):
+            if matches[i] == 1:
+                rank[i] = 1
+                # If 1 is found then break as you dont need to look further path k
+                break
+        all_rank.append(rank)
+        valid_queries +=1
+    #print(all_rank)
+    sum_all_ranks = np.zeros(len(all_rank[0]))
+    for i in range(0,len(all_rank)):
+        my_array = all_rank[i]
+        for g in range(0, len(my_array)):
+            sum_all_ranks[g] = sum_all_ranks[g] + my_array[g]
+    sum_all_ranks = np.array(sum_all_ranks)
+    print("NPSAR", sum_all_ranks)
+    cmc_restuls = np.cumsum(sum_all_ranks) / valid_queries
+    print(cmc_restuls)
+    return cmc_restuls
+
+
 
 def get_distance(query_img, gallary_img):
     net = Convdev().cuda()
     optimizer = optim.Adam(net.parameters(),lr = 0.0005)
-    PATH = 'ckpts/model40.pt'
+    PATH = 'ckpts/model190.pt'
 
     checkpoint = torch.load(PATH)
     net.load_state_dict(checkpoint['model_state_dict'])
@@ -141,13 +187,6 @@ for i in range(len(randomid)):
             print("{0:0.4f}".format(distance.item()))
             with open(Config.query_gallery_distance, "a") as f:
                 f.write("{0:0.4f}".format(distance.item()) + " ")
-
-
-    # Store distance with space.
-
-
-
-
 
 
 

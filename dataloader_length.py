@@ -51,7 +51,7 @@ if __name__ == '__main__':
 	siamese_dataset = SiameseTriplet(imageFolderDataset=folder_dataset, transform=transforms, should_invert=False)
 	print("load Dataset Done")
 
-	model = Convdev().cuda()
+	model = Convdev()
 	#model = Convdev()
 	criterion = TripletLoss()
 
@@ -66,3 +66,11 @@ if __name__ == '__main__':
 
 	train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=0, batch_size=Config.train_batch_size)
 	print(len(train_dataloader.dataset))
+
+	for i, data in enumerate(train_dataloader):
+		# print("Step " + str(i))
+		# print("Step " + str(i))
+
+		anchor, positive, negative = data
+		print(anchor.shape)
+		print(positive.shape)

@@ -21,7 +21,7 @@ from scipy.stats import multivariate_normal
 
 class Config():
     training_dir = "crops/"
-    testing_dir = "campus/"
+    testing_dir = "campus/test/"
 
 
 transforms = torchvision.transforms.Compose([
@@ -71,9 +71,13 @@ class Siamese_Triplet_Test(Dataset):
         # Selecting positive image.
         anchor_image_name = img0_tuple[0].split('/')[-1]
         anchor_class_name = img0_tuple[0].split('/')[-2]
+        anchor_class = img0_tuple[0].split('\\')[0]
 
-        all_files_in_class = glob.glob(self.imageFolderDataset.root + anchor_class_name + '/*')
-        all_files_in_class = [x for x in all_files_in_class if x != img0_tuple[0]]
+        print(self.imageFolderDataset.root)
+        all_files_in_class = os.listdir(anchor_class)
+        # all_files_in_class = glob.glob(self.imageFolderDataset.root + anchor_class_name + '/*')
+        all_files_in_class = [self.imageFolderDataset.root + x[:4] + '/' + x for x in all_files_in_class if
+                              x != img0_tuple[0].split('\\')[-1]]
 
         if len(all_files_in_class) == 0:
             positive_image = img0_tuple[0]
@@ -81,8 +85,8 @@ class Siamese_Triplet_Test(Dataset):
             positive_image = random.choice(all_files_in_class)
         # print(len(positive_image),anchor_class_name,positive_image)
 
-        if anchor_class_name != positive_image.split('/')[-2]:
-            print("Error")
+        #if anchor_class_name != positive_image.split('/')[-2]:
+        #    print("Error")
 
         anchor = Image.open(img0_tuple[0])
         # negative = Image.open(img1_tuple[0])
@@ -128,7 +132,7 @@ dataiter = iter(test_dataloader)
 x0, _, _ = next(dataiter)
 net = Convdev().cuda()
 optimizer = optim.Adam(net.parameters(),lr = 0.0005)
-PATH = 'ckpts/model20.pt'
+PATH = 'ckpts/model190.pt'
 
 checkpoint = torch.load(PATH)
 net.load_state_dict(checkpoint['model_state_dict'])
