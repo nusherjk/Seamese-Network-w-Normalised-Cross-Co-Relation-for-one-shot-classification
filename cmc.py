@@ -15,13 +15,13 @@ from torch import optim
 import torch.nn.functional as F
 import os
 import random
-from tqdm import tqdm
+import gc
+
 
 from dataloader import *
 from network import *
 from scipy.stats import multivariate_normal
-def takeSecond(elem):
-    return elem[1]
+
 
 def get_test_input(img):
     img = cv2.imread(img)
@@ -32,7 +32,7 @@ def get_test_input(img):
     #img_ = img_[ :, :, :] / 255.0  # Add a channel at 0 (for batch) | Normalise
     img_ = torch.from_numpy(img_).float()     #Convert to float
     # print(img_.shape)
-    img_ = Variable(img_).cuda()                   # Convert to Variable
+    img_ = Variable(img_).cuda()                 # Convert to Variable
     return img_
 
 
@@ -73,64 +73,32 @@ def get_gaussian_mask():
 
 
 
-def cmc(querys, gallery,q_cam, g_cam,distance, topk):
-    """
-    TODO: make  q_cam and g_cam working so that it does not check the same cameras
-    :param querys: set of query ids in numpy array
-    :param gallery: set of all gallary ids numpy array
-    :param q_cam: query camera either 1 or 0
-    :param g_cam: gallary camera either 1 or 0
-    :param distance: dist[i][j] where i == query_id and j == gallary_id, value: distance
-    :param topk: rank top k default = 20
-    :return:
-    """
+def cmc(querys, gallery, topk):
     ret = np.zeros(topk)
     valid_queries = 0
     all_rank = []
     sum_rank = np.zeros(topk)
-    for query in range(len(querys)):
-        q_id = int(querys[query])
-        qCam = q_cam[query]
-
-        distmat =[]
-        for gal in range(len(gallery)):
-
-            gId = int(gallery[gal])
-
-            gCam = g_cam[gal]
-            dist = distance[query][gal]
-            distmat.append((gId, dist))
-        """
     for query in querys:
         q_id = query[0]
         q_feature = query[1]
         # Calculate the distances for each query
         distmat = []
-        for gid in gallery:
+        for img, feature in gallery:
             # Get the label from the image
-            #name = "{0:04d}".format(img)
+            name = img
 
-    
-            name,_,_ = get_info(img)  # id of the gallary image.
-            #dist = np.linalg.norm(q_feature - feature)
-            distmat.append([name, dist, img])
-        """
+            #name,_,_ = get_info(img)  # id of the gallary image.
+            dist = get_distance(q_feature, feature)
+            distmat.append([name, dist])
+            gc.collect()
+
         # Sort the results for each query
-
-        distmat.sort(key= takeSecond)
-        distmat = distmat[::-1]
+        distmat.sort(key=lambda x: x[1])
         # Find matches
         matches = np.zeros(len(distmat))
         # Zero if no match 1 if match
         for i in range(0, len(distmat)):
-
             if distmat[i][0] == q_id:
-                print(distmat[i][1])
-                print(distmat[i][0])
-
-                print(q_id)
-                print()
-
                 # Match found
                 matches[i] = 1
         rank = np.zeros(topk)
@@ -151,7 +119,6 @@ def cmc(querys, gallery,q_cam, g_cam,distance, topk):
     #print("NPSAR", sum_all_ranks)
     cmc_restuls = np.cumsum(sum_all_ranks) / valid_queries
     print(cmc_restuls)
-    print(valid_queries)
     return cmc_restuls
 
 
@@ -176,95 +143,38 @@ def get_distance(query_img, gallary_img):
     gallary_img = transforms(gallary_img)
     """
 
-    query_img = get_test_input(query_img)
-    gallary_img = get_test_input(gallary_img)
+    #query_img = get_test_input(query_img)
+    #gallary_img = get_test_input(gallary_img)
 
     gaussian_mask = get_gaussian_mask().cuda()
     out1, out2 = net(query_img*gaussian_mask,gallary_img* gaussian_mask)
     distance = ncc(out1, out2)
     return distance
 
-def tabruns():
+
+if __name__ == '__main__':
+    querylist = []
+    galarylist = []
+    topk = 20
+
     randomid = random.sample(range(1, 485), 100)
     for i in range(len(randomid)):
         randomid[i] = randomid[i]*2
 
+    for i in range(len(randomid)):
 
-
-    for f in os.listdir(Config.testing_dir):
-        path = os.path.join(Config.testing_dir, f)
-        for id in os.listdir(path):
-            with open(Config.galaryid, 'a') as file:
-
-                g =str(int(f))
-                file.write(g + "\n")
-            with open(Config.galarycam, 'a') as file:
-                name = id.split('.')[0]
-                if(int(name)%4 == 3 or int(name)%4==0):
-                    file.write("0" + "\n")
-                else:
-                    file.write("1" + "\n")
-
-
-    for i in tqdm(range(len(randomid))):
-        #print("working on {} th query".format(i))
         query_img = os.path.join(Config.testing_dir, "{0:04d}".format(randomid[i]))
+        q_id = "{0:04d}".format(randomid[i])
+        q_path = query_img + '/' + random.choices(os.listdir(query_img), k=1)[0]
+        q_feature = get_test_input(q_path)
+        querylist.append([q_id, q_feature])
+        # Store qcam and randomid
 
-        qimg = random.choices(os.listdir(query_img), k=1)
-        if int(qimg[0].split('.')[0])%4 == 0 or int(qimg[0].split('.')[0])%4 == 3:
-            qcam = "0"
-        else:
-            qcam = "1"
-
-
-        #Store qcam and randomid
-
-        with open(Config.query_id, "a") as nqi:
-            nqi.write(str(randomid[i]) + "\n")
-
-        with open(Config.query_cam, "a") as nqi:
-            nqi.write(str(qcam) + "\n")
-
-
-        for gid in os.listdir(Config.testing_dir):
-            for gimg in os.listdir(os.path.join(Config.testing_dir, gid)):
-                qimg1 = query_img + '/' + qimg[0]
-                gimg2 = Config.testing_dir + '/' + gid +'/'+ gimg
-
-                #print(qimg1)
-                #print(gimg2)
-                distance = get_distance(qimg1, gimg2)
-                #print("{0:0.4f}".format(distance.item()))
-                with open(Config.query_gallery_distance, "a") as f:
-                    f.write("{0:0.4f}".format(distance.item()) + " ")
-
-        with open(Config.query_gallery_distance, "a") as f:
-            f.write("\n")
-
-
-
-
-def cmc_ranking():
-    querys = np.loadtxt(Config.query_id)
-    querycams = np.loadtxt(Config.query_cam)
-    gallays = np.loadtxt(Config.galaryid)
-    gallaycams = np.loadtxt(Config.galarycam)
-    distmat = np.loadtxt(Config.query_gallery_distance)
-    #print(distmat[0][996])
-    #print(distmat[0][998])
-    #print(distmat[0][999])
-    #print(distmat[0][997])
-    #print(np.sort(distmat[0])[::-1])
-    """for i in range(len(distmat[0])d):
-        
-        if(distmat[0][i]==0.9990):
-            print(i)
-    print(max(distmat[0]))"""
-    cmc(querys,gallays,querycams,gallaycams,distmat,20)
-
-
-
-if __name__== '__main__':
-    cmc_ranking()
-
-
+    for gid in os.listdir(Config.testing_dir):
+        for gimg in os.listdir(os.path.join(Config.testing_dir, gid)):
+            g_id = gid
+            g_path = os.path.join(Config.testing_dir, gid)+ '/' + gimg
+            g_feature = get_test_input(g_path)
+            galarylist.append([g_id, g_feature])
+    #print(galarylist)
+    cmc(querylist,galarylist,topk)
