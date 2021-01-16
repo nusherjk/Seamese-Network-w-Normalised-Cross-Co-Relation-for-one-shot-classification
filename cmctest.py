@@ -90,31 +90,21 @@ def cmc(querys, gallery,q_cam, g_cam,distance, topk):
     sum_rank = np.zeros(topk)
     for query in range(len(querys)):
         q_id = int(querys[query])
-        qCam = q_cam[query]
-
+        qCam = int(q_cam[query])
         distmat =[]
         for gal in range(len(gallery)):
 
             gId = int(gallery[gal])
 
-            gCam = g_cam[gal]
-            dist = distance[query][gal]
-            distmat.append((gId, dist))
-        """
-    for query in querys:
-        q_id = query[0]
-        q_feature = query[1]
-        # Calculate the distances for each query
-        distmat = []
-        for gid in gallery:
-            # Get the label from the image
-            #name = "{0:04d}".format(img)
+            gCam = int(g_cam[gal])
+            if (qCam == gCam):
+                valid = False
+            else:
+                valid = True
 
-    
-            name,_,_ = get_info(img)  # id of the gallary image.
-            #dist = np.linalg.norm(q_feature - feature)
-            distmat.append([name, dist, img])
-        """
+            dist = distance[query][gal]
+            distmat.append((gId, dist, valid))
+
         # Sort the results for each query
 
         distmat.sort(key= takeSecond)
@@ -124,7 +114,7 @@ def cmc(querys, gallery,q_cam, g_cam,distance, topk):
         # Zero if no match 1 if match
         for i in range(0, len(distmat)):
 
-            if distmat[i][0] == q_id:
+            if distmat[i][0] == q_id and distmat[i][2] == True:
                 print(distmat[i][1])
                 print(distmat[i][0])
 
@@ -151,7 +141,7 @@ def cmc(querys, gallery,q_cam, g_cam,distance, topk):
     #print("NPSAR", sum_all_ranks)
     cmc_restuls = np.cumsum(sum_all_ranks) / valid_queries
     print(cmc_restuls)
-    print(valid_queries)
+    #print(valid_queries)
     return cmc_restuls
 
 
@@ -260,7 +250,7 @@ def cmc_ranking():
         if(distmat[0][i]==0.9990):
             print(i)
     print(max(distmat[0]))"""
-    cmc(querys,gallays,querycams,gallaycams,distmat,20)
+    cmc(querys,gallays,querycams,gallaycams,distmat,1000)
 
 
 

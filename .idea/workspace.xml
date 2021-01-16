@@ -19,16 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="bug fix">
-      <change afterPath="$PROJECT_DIR$/cmc.py" afterDir="false" />
+    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="cmc work.. doesnt work ideally">
+      <change afterPath="$PROJECT_DIR$/trainckpt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmctest.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmctest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/galary_cam.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/galary_cam.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/gallary_id.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/gallary_id.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/query_cam.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_cam.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/query_gallery_distance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_gallery_distance.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/query_id.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_id.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +216,8 @@
       <workItem from="1609674935233" duration="3000" />
       <workItem from="1609918303682" duration="756000" />
       <workItem from="1610597212811" duration="20774000" />
-      <workItem from="1610681409016" duration="10857000" />
+      <workItem from="1610681409016" duration="11557000" />
+      <workItem from="1610769007463" duration="6206000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -326,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610641836451</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="cmc work.. doesnt work ideally">
+      <created>1610705721671</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1610705721671</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,14 +364,15 @@
     <MESSAGE value="update ncc and fix triplet loss with a increase of margin" />
     <MESSAGE value="ncc fix" />
     <MESSAGE value="bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
+    <MESSAGE value="cmc work.. doesnt work ideally" />
+    <option name="LAST_COMMIT_MESSAGE" value="cmc work.. doesnt work ideally" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/cmctest.py</url>
-          <line>184</line>
+          <line>174</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

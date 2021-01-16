@@ -57,7 +57,8 @@ class SiameseTriplet(Dataset):
         anchor_class_name = img0_tuple[0].split('/')[-2]
         anchor_class = img0_tuple[0].split('\\')[0]
 
-        print(self.imageFolderDataset.root)
+        #print(self.imageFolderDataset.root)
+        #print(self.imageFolderDataset.root)
         all_files_in_class = os.listdir(anchor_class)
         #all_files_in_class = glob.glob(self.imageFolderDataset.root + anchor_class_name + '/*')
         all_files_in_class = [self.imageFolderDataset.root +x[:4]+ '/'+ x for x in all_files_in_class if x != img0_tuple[0].split('\\')[-1]]
