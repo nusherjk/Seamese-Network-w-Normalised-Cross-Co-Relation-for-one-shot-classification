@@ -19,13 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="cmc work.. doesnt work ideally">
-      <change afterPath="$PROJECT_DIR$/trainckpt.py" afterDir="false" />
+    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="bug fix">
+      <change afterPath="$PROJECT_DIR$/cmc4prid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmctest.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmctest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/galary_cam.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/galary_cam.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/gallary_id.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/gallary_id.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/query_cam.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_cam.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/query_gallery_distance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_gallery_distance.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/query_id.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_id.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trainckpt.py" beforeDir="false" afterPath="$PROJECT_DIR$/trainckpt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +223,18 @@
       <workItem from="1609918303682" duration="756000" />
       <workItem from="1610597212811" duration="20774000" />
       <workItem from="1610681409016" duration="11557000" />
-      <workItem from="1610769007463" duration="6206000" />
+      <workItem from="1610769007463" duration="17090000" />
+      <workItem from="1610820730333" duration="1428000" />
+      <workItem from="1610861207868" duration="2473000" />
+      <workItem from="1610984991379" duration="1275000" />
+      <workItem from="1611293437068" duration="20000" />
+      <workItem from="1611293501557" duration="12140000" />
+      <workItem from="1611410031307" duration="642000" />
+      <workItem from="1611424061680" duration="62000" />
+      <workItem from="1611465167442" duration="674000" />
+      <workItem from="1611470199952" duration="16533000" />
+      <workItem from="1611892657235" duration="856000" />
+      <workItem from="1611922212090" duration="2905000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -331,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610705721671</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="bug fix">
+      <created>1610778542251</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1610778542251</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,16 +387,16 @@
     <MESSAGE value="update 17th sept" />
     <MESSAGE value="update ncc and fix triplet loss with a increase of margin" />
     <MESSAGE value="ncc fix" />
-    <MESSAGE value="bug fix" />
     <MESSAGE value="cmc work.. doesnt work ideally" />
-    <option name="LAST_COMMIT_MESSAGE" value="cmc work.. doesnt work ideally" />
+    <MESSAGE value="bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/cmctest.py</url>
-          <line>174</line>
+          <line>187</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

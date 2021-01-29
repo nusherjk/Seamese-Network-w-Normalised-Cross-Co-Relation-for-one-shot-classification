@@ -72,7 +72,7 @@ if __name__ == '__main__':
 	criterion = TripletLoss()
 
 	#Optimizer
-	optimizer = optim.Adam(model.parameters(),lr = .005)
+	optimizer = optim.Adam(model.parameters(),lr = .0001)
 
 	counter = []
 	loss_history = []
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
 	print("load Dataloader")
 
-	train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=2, batch_size=Config.train_batch_size)
+	train_dataloader = DataLoader(siamese_dataset, shuffle=True, num_workers=4, batch_size=Config.train_batch_size)
 	print("load Dataloader Done")
 
 	# Multiply each image with mask to give attention to center of the image.
@@ -128,8 +128,8 @@ if __name__ == '__main__':
 				writer.add_scalar('Loss/step', triplet_loss.item(), iteration_number)
 				print("Epoch number {}\n Current loss {}\n ".format(epoch, triplet_loss.item()))
 				iteration_number += 10
-				counter.append(iteration_number)
-				loss_history.append(triplet_loss.item())
+				#counter.append(iteration_number)
+				#loss_history.append(triplet_loss.item())
 
 		if epoch % 10 == 0:
 			if not os.path.exists('ckpts/'):
@@ -146,7 +146,7 @@ if __name__ == '__main__':
 		gc.collect()
 			#torch.save(model,  'ckpts/model' + str(epoch) + '.pt')
 
-	show_plot(counter, loss_history, path='ckpts/loss.png')
+	#show_plot(counter, loss_history, path='ckpts/loss.png')
 	writer.close()
 	'''for n_iter in range(100):
 		

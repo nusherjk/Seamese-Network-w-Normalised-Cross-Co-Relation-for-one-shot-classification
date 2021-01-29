@@ -68,10 +68,10 @@ if __name__ == '__main__':
 
     model = Convdev().cuda()
     # model = Convdev()
-    criterion = TripletLoss(margin=0.0)
+    criterion = TripletLoss(margin=1.0)
 
     # Optimizer
-    optimizer = optim.Adam(model.parameters(), lr=.005)
+    optimizer = optim.Adam(model.parameters(), lr=.0005)
 
     counter = []
     loss_history = []
@@ -134,10 +134,10 @@ if __name__ == '__main__':
                 print("Epoch number {}\n Current loss {}\n ".format(epoch, triplet_loss.item()))
 
                 iteration_number += 10
-                counter.append(iteration_number)
-                loss_history.append(triplet_loss.item())
+                #counter.append(iteration_number)
+                #loss_history.append(triplet_loss.item())
 
-        if epoch % 30 == 0:
+        if epoch % 10 == 0:
             if not os.path.exists('ckpts/'):
                 os.mkdir('ckpts')
 
@@ -152,7 +152,7 @@ if __name__ == '__main__':
         gc.collect()
     # torch.save(model,  'ckpts/model' + str(epoch) + '.pt')
 
-    show_plot(counter, loss_history, path='ckpts/loss.png')
+    #show_plot(counter, loss_history, path='ckpts/loss.png')
     writer.close()
     '''for n_iter in range(100):
 

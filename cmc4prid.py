@@ -50,8 +50,8 @@ def get_test_input(img):
 
 
 class Config():
-    training_dir = "campus/train/"
-    testing_dir = "campus/test/"
+    training_dir = "prid2011/train/"
+    testing_dir = "prid2011/test/"
     data_dir = "data/"
     galaryid = "data/gallary_id.txt"
     galarycam = "data/galary_cam.txt"
@@ -164,11 +164,14 @@ def get_distance(query_img, gallary_img):
     optimizer = optim.Adam(net.parameters(),lr = 0.0005)
     PATH = 'ckpts/model180.pt'
 
+
+    net.eval()
+
     checkpoint = torch.load(PATH)
     net.load_state_dict(checkpoint['model_state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-    epoch = checkpoint['epoch']
-    loss = checkpoint['loss']
+    #epoch = checkpoint['epoch']
+    #loss = checkpoint['loss']
 
     """query_img = Image.open(query_img)
     query_img = query_img.convert('RGB')
@@ -188,7 +191,7 @@ def get_distance(query_img, gallary_img):
     return distance
 
 def tabruns():
-    randomid = random.sample(range(1, 485), 100)
+    randomid = random.sample(range(1, 192), 100)
     for i in range(len(randomid)):
         randomid[i] = randomid[i]*2
 
@@ -203,7 +206,7 @@ def tabruns():
                 file.write(g + "\n")
             with open(Config.galarycam, 'a') as file:
                 name = id.split('.')[0]
-                if(int(name)%4 == 3 or int(name)%4==0):
+                if(name[4] == '0'):
                     file.write("0" + "\n")
                 else:
                     file.write("1" + "\n")
@@ -269,7 +272,7 @@ def cmc_ranking():
 
 
 if __name__== '__main__':
-    #tabruns()
+    tabruns()
     accuracy = cmc_ranking()
     acc = [ ac*100 for ac in accuracy]
     ranks = [r for r in range(1,len(accuracy)+1)]
