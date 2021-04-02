@@ -162,7 +162,7 @@ def cmc(querys, gallery,q_cam, g_cam,distance, topk):
 def get_distance(query_img, gallary_img):
     net = Convdev().cuda()
     optimizer = optim.Adam(net.parameters(),lr = 0.0005)
-    PATH = 'ckpts/model180.pt'
+    PATH = 'ckpts/modelb60.pt'
 
     checkpoint = torch.load(PATH)
     net.load_state_dict(checkpoint['model_state_dict'])
@@ -214,6 +214,7 @@ def tabruns():
         query_img = os.path.join(Config.testing_dir, "{0:04d}".format(randomid[i]))
 
         qimg = random.choices(os.listdir(query_img), k=1)
+
         if int(qimg[0].split('.')[0])%4 == 0 or int(qimg[0].split('.')[0])%4 == 3:
             qcam = "0"
         else:
@@ -236,7 +237,11 @@ def tabruns():
 
                 #print(qimg1)
                 #print(gimg2)
-                distance = get_distance(qimg1, gimg2)
+                if(qimg[0] == gimg):
+                    pass
+                else:
+
+                    distance = get_distance(qimg1, gimg2)
                 #print("{0:0.4f}".format(distance.item()))
                 with open(Config.query_gallery_distance, "a") as f:
                     f.write("{0:0.4f}".format(distance.item()) + " ")
@@ -269,11 +274,11 @@ def cmc_ranking():
 
 
 if __name__== '__main__':
-    #tabruns()
+    tabruns()
     accuracy = cmc_ranking()
     acc = [ ac*100 for ac in accuracy]
     ranks = [r for r in range(1,len(accuracy)+1)]
-    show_plot(ranks,acc, "pridmodel.png")
+    #show_plot(ranks,acc, "pridmodeldifcam.png")
 
 
 

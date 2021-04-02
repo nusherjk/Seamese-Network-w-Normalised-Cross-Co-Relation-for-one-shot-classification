@@ -104,6 +104,7 @@ def cmc(querys, gallery,q_cam, g_cam,distance, topk):
         q_id = int(querys[query])
         qCam = int(q_cam[query])
         distmat =[]
+        #print(len(gallery))
         for gal in range(len(gallery)):
 
             gId = int(gallery[gal])
@@ -131,7 +132,7 @@ def cmc(querys, gallery,q_cam, g_cam,distance, topk):
         # Zero if no match 1 if match
         for i in range(1, len(distmat)):
 
-            if distmat[i][0] == q_id:
+            if distmat[i][0] == q_id and i!=0:
                 #print('rank: {}'.format(i))
 
                 # Match found
@@ -256,6 +257,7 @@ def cmc_ranking():
     gallays = np.loadtxt(Config.galaryid)
     gallaycams = np.loadtxt(Config.galarycam)
     distmat = np.loadtxt(Config.query_gallery_distance)
+    print(distmat.shape)
     #print(distmat[0][996])
     #print(distmat[0][998])
     #print(distmat[0][999])
@@ -272,11 +274,11 @@ def cmc_ranking():
 
 
 if __name__== '__main__':
-    tabruns()
+    #tabruns()
     accuracy = cmc_ranking()
     acc = [ ac*100 for ac in accuracy]
     ranks = [r for r in range(1,len(accuracy)+1)]
-    show_plot(ranks,acc, "pridmodel.png")
+    show_plot(ranks,acc, "pridmodelcamc2.png")
 
 
 

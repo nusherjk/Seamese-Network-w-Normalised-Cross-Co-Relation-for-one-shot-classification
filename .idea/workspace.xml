@@ -19,9 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="bug fix">
-      <change afterPath="$PROJECT_DIR$/cmc4prid.py" afterDir="false" />
+    <list default="true" id="de33a5e4-69d4-4412-8bec-8853ff80915b" name="Default" comment="prid cmc added">
+      <change afterPath="$PROJECT_DIR$/testranking.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmc4prid.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmc4prid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmctest.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmctest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/galary_cam.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/galary_cam.txt" afterDir="false" />
@@ -29,6 +30,8 @@
       <change beforePath="$PROJECT_DIR$/data/query_cam.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_cam.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/query_gallery_distance.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_gallery_distance.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/query_id.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_id.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncc_tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/ncc_tester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trainckpt.py" beforeDir="false" afterPath="$PROJECT_DIR$/trainckpt.py" afterDir="false" />
@@ -70,7 +73,7 @@
       <recent name="C:\Users\Strix\PycharmProjects\Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.cmc">
+  <component name="RunManager" selected="Python.transformerlayer">
     <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
       <module name="Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -150,6 +153,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="transformerlayer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Seamese-Network-w-Normalised-Cross-Co-Relation-for-one-shot-classification" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Strix\PycharmProjects\pythonProject\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/transformerlayer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -177,6 +202,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.transformerlayer" />
         <item itemvalue="Python.cmc" />
         <item itemvalue="Python.dataloader_length" />
         <item itemvalue="Python.network" />
@@ -234,7 +260,13 @@
       <workItem from="1611465167442" duration="674000" />
       <workItem from="1611470199952" duration="16533000" />
       <workItem from="1611892657235" duration="856000" />
-      <workItem from="1611922212090" duration="2905000" />
+      <workItem from="1611922212090" duration="4178000" />
+      <workItem from="1611948298302" duration="13960000" />
+      <workItem from="1613490150743" duration="14480000" />
+      <workItem from="1613926453641" duration="5152000" />
+      <workItem from="1614061891429" duration="17638000" />
+      <workItem from="1614580767464" duration="5529000" />
+      <workItem from="1616562626458" duration="842000" />
     </task>
     <task id="LOCAL-00001" summary="created virtual environment and update readme.md">
       <created>1599319017569</created>
@@ -355,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610778542251</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="prid cmc added">
+      <created>1611929683757</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1611929683757</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +428,8 @@
     <MESSAGE value="ncc fix" />
     <MESSAGE value="cmc work.. doesnt work ideally" />
     <MESSAGE value="bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
+    <MESSAGE value="prid cmc added" />
+    <option name="LAST_COMMIT_MESSAGE" value="prid cmc added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -398,6 +438,16 @@
           <url>file://$PROJECT_DIR$/cmctest.py</url>
           <line>187</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testranking.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/network.py</url>
+          <line>213</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
