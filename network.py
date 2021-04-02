@@ -88,27 +88,59 @@ def ncc(embedding1 , embedding2):
     dot_product = torch.bmm(norm_embedding_1.view(embedding1.shape[0],1,embedding2.shape[1]),
                             norm_embedding_2.view(embedding2.shape[0],embedding2.shape[1], 1))
     dot_product = dot_product.reshape([dot_product.shape[0]]).div(embedding2.shape[1])
-    return  dot_product.abs()
+    #changed to sigmoid function instead of absolute value.
+    #return  torch.sigmoid(dot_product)
+    return torch.abs(dot_product)
+
+class Ncc(nn.Module):
+    def __init__(self, ):
+        super(Ncc, self).__init__()
+        self.layer = nn.Conv2d(in_channels=3, out_channels=1, kernel_size=5, stride=1, padding=0, bias=False)
+
+    def channl_normalize(self, template):
+        template = template.reshape([template.shape[0], template.shape[1]])
+        mean = template.mean(dim=-1)
+        mean = mean.unsqueeze(1).repeat(1, template.shape[1])
+        stddev = template.std(dim=-1)
+        stddev = stddev.unsqueeze(1).repeat(1, template.shape[1])
+        return template.sub(mean).div(stddev)
+
+    def ncc(self, embedding1, embedding2):
+        norm_embedding_1 = self.channl_normalize(embedding1)
+        norm_embedding_2 = self.channl_normalize(embedding2)
+        dot_product = torch.bmm(norm_embedding_1.view(embedding1.shape[0], 1, embedding2.shape[1]),
+                                norm_embedding_2.view(embedding2.shape[0], embedding2.shape[1], 1))
+        dot_product = dot_product.reshape([dot_product.shape[0]]).div(embedding2.shape[1])
+        # changed to sigmoid function instead of absolute value.
+        return torch.sigmoid(dot_product)
+
+    def forward(self, emb1, emb2):
+        #return self.ncc(emb1, emb2)
+        #out1 = self.layer(emb1)
+        #out2 = self.layer(emb2)
+        return self.ncc(emb1, emb2)
+
+
 
 
 class Convdev(nn.Module):
     def __init__(self):
         super(Convdev, self).__init__()
-        self.layer1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, stride=1, padding=0, bias=False)
+        self.layer1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, stride=1, padding=0, bias=True)
         self.batchnorm1 = nn.BatchNorm2d(32)
-        self.layer2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=2, padding=0, bias=False)
+        self.layer2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=2, padding=0, bias=True)
         self.batchnorm2 = nn.BatchNorm2d(64)
-        self.layer3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=2, padding=0, bias=False)
+        self.layer3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=2, padding=0, bias=True)
         self.batchnorm3 = nn.BatchNorm2d(128)
-        self.layer4 = nn.Conv2d(in_channels=128, out_channels=256, kernel_size=1, stride=2, padding=0, bias=False)
+        self.layer4 = nn.Conv2d(in_channels=128, out_channels=256, kernel_size=1, stride=2, padding=0, bias=True)
         self.batchnorm4 = nn.BatchNorm2d(256)
-        self.layer5 = nn.Conv2d(in_channels=256, out_channels=256, kernel_size=1, stride=2, padding=0, bias=False)
+        self.layer5 = nn.Conv2d(in_channels=256, out_channels=256, kernel_size=1, stride=2, padding=0, bias=True)
         self.batchnorm5 = nn.BatchNorm2d(256)
-        self.layer6 = nn.Conv2d(in_channels=256, out_channels=512, kernel_size=3, stride=2, padding=0, bias=False)
+        self.layer6 = nn.Conv2d(in_channels=256, out_channels=512, kernel_size=3, stride=2, padding=0, bias=True)
         self.batchnorm6 = nn.BatchNorm2d(512)
-        self.layer7 = nn.Conv2d(in_channels=512, out_channels=1024, kernel_size=1, stride=2, padding=0, bias=False)
+        self.layer7 = nn.Conv2d(in_channels=512, out_channels=1024, kernel_size=1, stride=2, padding=0, bias=True)
         self.batchnorm7 = nn.BatchNorm2d(1024)
-        self.layer8 = nn.Conv2d(in_channels=1024, out_channels=512, kernel_size=1, stride=2, padding=0, bias=False)
+        self.layer8 = nn.Conv2d(in_channels=1024, out_channels=512, kernel_size=1, stride=2, padding=0, bias=True)
         self.batchnorm8 = nn.BatchNorm2d(512)
 
         self.pool = nn.MaxPool2d(2,2)
@@ -136,8 +168,8 @@ class Convdev(nn.Module):
         out = self.lReLU(self.batchnorm7(self.layer7(out)))
 
 
-        #out = self.lReLU(self.batchnorm8(self.layer8(out)))
-        out = self.pool(out)
+        out = self.lReLU((self.layer8(out)))
+        #out = self.pool(out)
         #print(out.shape)
         return out
 
@@ -183,6 +215,8 @@ class TripletLoss(nn.Module):
         #Have to change this output
         #distance_positive = F.cosine_similarity(anchor, positive)  # Each is batch X 512
         #distance_negative = F.cosine_similarity(anchor, negative)
+        #nccval = ncc(anchor, positive)
+        #print(nccval)
         distance_positive = 1-ncc(anchor, positive)
         distance_negative = 1-ncc(anchor, negative)
 
@@ -204,6 +238,7 @@ if __name__ == '__main__':
     out1, out2,out3  = model(img1, img2, img2)
     loss = tpl(out1,out2, out3 )
     print(out1.shape)
+
     print(loss)
 
     #ncc_value = out1 #torch.sum(out)/n

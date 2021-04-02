@@ -125,8 +125,8 @@ class Siamese_Triplet_Test(Dataset):
         return len(self.imageFolderDataset.imgs)
 
 
-folder_dataset_test = dset.ImageFolder(root=Config.testing_dir)
-#folder_dataset_test = dset.ImageFolder(root=Config.training_dir)
+#folder_dataset_test = dset.ImageFolder(root=Config.testing_dir)
+folder_dataset_test = dset.ImageFolder(root=Config.training_dir)
 siamese_dataset = Siamese_Triplet_Test(imageFolderDataset=folder_dataset_test, transform=transforms,
                                        should_invert=False)
 test_dataloader = DataLoader(siamese_dataset, num_workers=0, batch_size=1, shuffle=False)
@@ -134,7 +134,7 @@ dataiter = iter(test_dataloader)
 x0, _, _ = next(dataiter)
 net = Convdev().cuda()
 optimizer = optim.Adam(net.parameters(),lr = 0.0005)
-PATH = 'ckpts/model180.pt'
+PATH = 'ckpts/model3000.pt'
 
 checkpoint = torch.load(PATH)
 net.load_state_dict(checkpoint['model_state_dict'])

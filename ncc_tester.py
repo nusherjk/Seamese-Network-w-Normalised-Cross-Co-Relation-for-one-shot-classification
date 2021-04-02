@@ -2,7 +2,7 @@ import torch
 import cv2
 import numpy as np
 from torch.autograd import Variable
-
+from network import Ncc, Convdev
 img = "img.jpg"
 
 def get_test_input(img):
@@ -79,10 +79,18 @@ FB = imgB.sub(meanB).div(stdB)
 #ncc = torch.tensordot(FA,FB)
 ncc = torch.bmm(FA.view(bn,1,1024),FB.view(bn,1024,1))
 print(ncc.div(1024))"""
+
+#print(ncc(imgAemb, imgAemb))
 #t = imgA.div(stdd)
 #print(ncc.reshape([bn,1024]).mean(dim=-1))
 #print(nimg)
 #print(imgAemb)
 #print(imgBemb)
-print(ncc(imgAemb, imgBemb))
+
+#model = Convdev()
+new_model = Ncc()
+ans = new_model(imgAemb, imgAemb)
+print(ans)
+#print(s.shape)
+
 

@@ -125,17 +125,18 @@ if __name__ == '__main__':
 			#writer.add_scalar('Loss/step', triplet_loss.item(), iteration_number)
 
 			if i % 10 == 0:
-				writer.add_scalar('Loss/step', triplet_loss.item(), iteration_number)
+				#writer.add_scalar('Loss/step', triplet_loss.item(), iteration_number)
 				print("Epoch number {}\n Current loss {}\n ".format(epoch, triplet_loss.item()))
-				iteration_number += 10
+				#iteration_number += 10
 				#counter.append(iteration_number)
 				#loss_history.append(triplet_loss.item())
 
+		writer.add_scalar('Loss/Epoch', triplet_loss.item(), epoch)
 		if epoch % 10 == 0:
 			if not os.path.exists('ckpts/'):
 				os.mkdir('ckpts')
 
-			PATH =  'ckpts/model' + str(epoch) + '.pt'
+			PATH =  'ckpts/modelb' + str(epoch) + '.pt'
 			torch.save({
 					'epoch': epoch,
 					'model_state_dict': model.state_dict(),

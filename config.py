@@ -1,5 +1,6 @@
 class Config():
-	training_dir = "prid2011/train/"
-	testing_dir = "prid2011/test/"
+	training_dir = "campus/train/"
+	#validation_set = "prid2011/val/"
+	testing_dir = "campus/test/"
 	train_batch_size = 16
-	train_number_epochs = 601
+	train_number_epochs = 3001

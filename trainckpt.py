@@ -78,7 +78,7 @@ if __name__ == '__main__':
     iteration_number = 0
 
     # load checkpoints
-    PATH = 'ckpts/model190.pt'
+    PATH = 'ckpts/model1500.pt'
     checkpoint = torch.load(PATH)
     model.load_state_dict(checkpoint['model_state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
@@ -130,13 +130,13 @@ if __name__ == '__main__':
             # writer.add_scalar('Loss/step', triplet_loss.item(), iteration_number)
 
             if i % 10 == 0:
-                writer.add_scalar('Loss/step', triplet_loss.item(), iteration_number)
+
                 print("Epoch number {}\n Current loss {}\n ".format(epoch, triplet_loss.item()))
 
                 iteration_number += 10
                 #counter.append(iteration_number)
                 #loss_history.append(triplet_loss.item())
-
+        writer.add_scalar('Loss/epoch', triplet_loss.item(), epoch)
         if epoch % 10 == 0:
             if not os.path.exists('ckpts/'):
                 os.mkdir('ckpts')
